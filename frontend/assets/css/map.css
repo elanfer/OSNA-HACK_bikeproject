@@ -1,1 +1,10 @@
-#mapid { height:100vh; }
+#mapid { 
+  height:100vh; 
+}
+
+.my_polyline{
+  stroke: green;
+  fill: none;
+  stroke-dasharray: 10,10; 
+  stroke-width: 5; 
+}
