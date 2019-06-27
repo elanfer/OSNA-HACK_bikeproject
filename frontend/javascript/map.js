@@ -7,41 +7,85 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: 'pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA'
 }).addTo(mymap);
 
-function createLines(dataArr) {
-  
-  dataArr.map(way => {
-    var nodes = way.nodes
-    var normalizedTags = way.normalizedTags
+$( document ).ready(function(){
 
-    var objOfNodes = nodes.map(function(obj) {
-      return Object.keys(obj).sort().reverse().map(function(key) { 
-        return obj[key];
-      });
-    });
-    
-    var arrOfNodes = objOfNodes.map(function(el){
-      var arr=[];
-      for(var key in el){
-        arr.push(el[key]);
-      }
-      return arr;
-    });
-    
-    var index =  Math.round(arrOfNodes.length / 2)
-    var midPos = arrOfNodes[index];
-    
-    var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline' }).addTo(mymap);
-    
-    polyline.bindPopup("<p>"+ normalizedTags.robots +"</p>"+"<p>"+ normalizedTags.love +"</p>"+"<p>"+ normalizedTags.state +"</p>", {
-      showOnMouseOver: true
-    });
+  $.get("http://10.229.54.121:8080/ways?maxLat=52.277676&minlat=52.279927&maxLng=8.033865&minLng=8.078091", function(){
+    console.log('succes')
   });
-}
 
-$.getJSON("data.json", function(json) {
-  //console.log(json); 
-  createLines(json)
+  function createLines(dataArr) {
+    
+    dataArr.map(way => {
+      var nodes = way.nodes
+      var normalizedTags = way.normalizedTags
+      var stateColor = ""
+  
+      var objOfNodes = nodes.map(function(obj) {
+        return Object.keys(obj).sort().reverse().map(function(key) { 
+          return obj[key];
+        });
+      });
+      
+      var arrOfNodes = objOfNodes.map(function(el){
+        var arr=[];
+        for(var key in el){
+          arr.push(el[key]);
+        }
+        return arr;
+      });
+
+
+
+      var index = 0.8
+      function setPopUpColor(val){
+      
+        var newStateColor
+        if (val <= 0.3){
+          newStateColor = stateColor = "#DF4848"
+        }else if(val > 0.3 && val <= 0.6 ) {
+          newStateColor = stateColor = "#FF9C07"
+        }else if(val >= 0.6) {
+          console.log('val', val)
+          newStateColor = stateColor = "#57C571"
+        }
+        return newStateColor
+        
+      }  
+      
+     
+
+      var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline', id: 'my_polyline' }).addTo(mymap);
+      polyline.bindPopup(
+        "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
+          "<div id='popUp' class=''>"+
+            "<p>"+ normalizedTags.robots +"</p>"+"<p>"+ normalizedTags.love +"</p>"+"<p>"+ normalizedTags.state +"</p>"
+          +"</div>"
+        +"</div>"
+        
+        , {
+        showOnMouseOver: true
+      });
+
+
+      
+      
+     
+
+    });
+  }
+  
+  $.getJSON("data.json", function(json) {
+    createLines(json)
+  });
+
+
+
+ 
 });
+
+
+
+
 
 /*fetch('./data.json')
   .then(function(resp) {
