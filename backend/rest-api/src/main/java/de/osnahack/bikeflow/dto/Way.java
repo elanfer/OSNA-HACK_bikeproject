@@ -1,13 +1,17 @@
 package de.osnahack.bikeflow.dto;
 
 import java.util.List;
+import java.util.Map;
 
 public class Way {
     private String type;
     private List<Node> nodes;
 
-    public Way(List<Node> nodes) {
+    private Map<String, String> normalizedTags;
+
+    public Way(List<Node> nodes, Map<String, String> normalizedTags) {
         this.nodes = nodes;
+        this.normalizedTags = normalizedTags;
     }
 
     public String getType() {
@@ -24,5 +28,13 @@ public class Way {
 
     public void setNodes(List<Node> nodes) {
         this.nodes = nodes;
+    }
+
+    public Map<String, String> getNormalizedTags() {
+        return normalizedTags;
+    }
+
+    public void setNormalizedTags(Map<String, String> normalizedTags) {
+        this.normalizedTags = normalizedTags;
     }
 }
