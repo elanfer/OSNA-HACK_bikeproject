@@ -10,10 +10,12 @@ http://github.com/bmander/graphserver/tree/master and is copyright (c)
 import xml.sax
 import copy
 import networkx
+import matplotlib.pyplot as plt
 
-#highway_cat = 'motorway|trunk|primary|secondary|tertiary|road|residential|service|motorway_link|trunk_link|primary_link|secondary_link|teriary_link'
 
-def download_osm(left,bottom,right,top,highway_cat):
+highway_cat = 'motorway'
+
+def download_osm(left,bottom,right,top):
     """
     Downloads OSM street (only highway-tagged) Data using a BBOX, 
     plus a specification of highway tag values to use
@@ -30,7 +32,7 @@ def download_osm(left,bottom,right,top,highway_cat):
     """
 
     #Return a filehandle to the downloaded data."""
-    from urllib import urlopen
+    from urllib.request import urlopen
     #fp = urlopen( "http://api.openstreetmap.org/api/0.6/map?bbox=%f,%f,%f,%f"%(left,bottom,right,top) )
     #fp = urlopen( "http://www.overpass-api.de/api/xapi?way[highway=*][bbox=%f,%f,%f,%f]"%(left,bottom,right,top) )
     print("trying to download osm data from "+str(left),str(bottom),str(right),str(top)+" with highways of categories"+highway_cat)
@@ -62,20 +64,23 @@ def read_osm(filename_or_stream, only_roads=True):
     """
     osm = OSM(filename_or_stream)
     G = networkx.DiGraph()
- 
-    for w in osm.ways.itervalues():
+    for w in osm.ways.items():
+        w = w[1]
         if only_roads and 'highway' not in w.tags:
             continue
-        G.add_path(w.nds, id=w.id, highway = w.tags['highway'], street= w.tags['name'])#{str(k): type(v) for k,v in w.tags.items()})
+        if 'name' in w.tags:
+            G.add_path(w.nds, id=w.id, highway = w.tags['highway'], street= w.tags['name'])#{str(k): type(v) for k,v in w.tags.items()})
         
         if 'oneway' not in w.tags and  w.tags['highway'] != 'motorway':
-            G.add_path(reversed(w.nds), id= '-' + str(w.id), highway = w.tags['highway'], street= w.tags['name'])
+            if 'name' in w.tags:
+                G.add_path(reversed(w.nds), id= '-' + str(w.id), highway = w.tags['highway'], street= w.tags['name'])
 
         elif w.tags['oneway'] != 'yes' and w.tags['oneway'] != '-1' and  w.tags['highway'] != 'motorway':
-            G.add_path(reversed(w.nds), id=w.id, highway = w.tags['highway'], street= w.tags['name'])
+            if 'name' in w.tags:
+                G.add_path(reversed(w.nds), id=w.id, highway = w.tags['highway'], street= w.tags['name'])
 
         
-    for n_id in G.nodes_iter():
+    for n_id in G.node_dict_factory():
         n = osm.nodes[n_id]
         G.node[n_id] = dict(lon=n.lon,lat=n.lat)
     return G
@@ -157,7 +162,8 @@ class OSM:
                 elif name=='tag':
                     self.currElem.tags[attrs['k']] = attrs['v']
                 elif name=='nd':
-                    self.currElem.nds.append( attrs['ref'] )
+                    if(isinstance(self.currElem, Way)):
+                        self.currElem.nds.append(attrs['ref'])
                 
             @classmethod
             def endElement(self,name):
@@ -186,9 +192,26 @@ class OSM:
         
         #use that histogram to split all ways, replacing the member set of ways
         new_ways = {}
-        for id, way in self.ways.iteritems():
+        for id, way in self.ways.items():
             split_ways = way.split(node_histogram)
             for split_way in split_ways:
                 new_ways[split_way.id] = split_way
         self.ways = new_ways
         #"""
+
+print("Moped")
+#fs = download_osm(8.0289, 52.2609, 8.0626, 52.2735)
+fs = 'map.osm'
+G = read_osm(fs)
+
+
+# Need to create a layout when doing
+# separate calls to draw nodes and edges
+edge_labels=dict([((u,v,),d['street'])
+                 for u,v,d in G.edges(data=True)])
+pos = networkx.spring_layout(G)
+networkx.draw_networkx_nodes(G, pos, node_size = 30)
+black_edges = [edge for edge in G.edges()]
+networkx.draw_networkx_edges(G, pos, edgelist=black_edges, arrows=False)
+networkx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+plt.show()
