@@ -112,7 +112,7 @@ input {
   top: 50%;
   left: 80%;
   transform: translate(0%, -50%);
-float: right;
+  float: right;
 }
 
 .logo {
@@ -141,57 +141,40 @@ float: right;
       display: inline-block;
 }
 
-.controlls_header{
-  padding: 1rem;
-  color: white;
-  font-family: Roboto;
-  font-size: 2rem;
-  margin-top: 2rem;
+#settings {
+  font-family: sans-serif;
 }
 
-.controlls_settings{
+.controlls_header {
+  padding: 1rem;
+  color: white;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.controlls_settings {
   display: flex;
-  width: 60%;
+  color: white;
+  width: 70%;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 5rem;
   margin-left: 1rem;
 }
 
-.controlls_settings_red{
-  background-color: #DF4848;
+#controlls_toggle_user_feedback {
+  background-color: grey;
   color: white;
   text-transform: uppercase;
-  font-family: Roboto;
   padding: 1rem;
   border-radius: 5px;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
   border: none;
   cursor: pointer;
 }
 
-.controlls_settings_orange{
-  background-color: #FF9C07;
-  color: white;
-  text-transform: uppercase;
-  font-family: Roboto;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  border: none;
-  cursor: pointer;
-}
-
-.controlls_settings_green{
-  background-color: #57C571;
-  color: white;
-  text-transform: uppercase;
-  font-family: Roboto;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  border: none;
-  cursor: pointer;
+#controlls_toggle_user_feedback.active {
+  background-color: green;controlls_header
 }
 
 .street-name{

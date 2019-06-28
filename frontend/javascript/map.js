@@ -10,20 +10,6 @@ var customMarker = L.icon({
 });
 
 
-function disableLine(color) {
-
-  var paths = document.getElementsByTagName('path')
-  var arr = [].slice.call(paths);
-
-  arr.map(path => {
-    console.log(path.style.stroke)
-    if (path.style.stroke == color) {
-      console.log(path.style.stroke)
-      path.style.display = "none";
-    }
-  })
-}
-
 var active = false;
 function toggle() {
   var el = document.getElementById('settings')
@@ -54,6 +40,11 @@ this.mymap.locate({
 });
 
 function calcIndex(way) {
+  if (way.customTags.userFeedback === 0 && getUserFeedbackSettingValue() === true)
+  {
+    return 0;
+  }
+
   return way.customTags["norm_default_calc"];
 }
 
@@ -169,12 +160,35 @@ function updateWays() {
   });
 }
 
+function toggleUserFeedbackClick(event) {
+  $controllsToggleUserFeedback = $(event.target);
+  var settingValue = setUserFeedbackSettingValue(!getUserFeedbackSettingValue());
+  $controllsToggleUserFeedback.text(settingValue ? "Deaktivieren" : "Aktivieren");
+  $controllsToggleUserFeedback.toggleClass("active");
+}
+
+function getUserFeedbackSettingValue() {
+  return window.localStorage.getItem("userFeedbackSetting") !== "false";
+}
+
+function setUserFeedbackSettingValue(value) {
+  window.localStorage.setItem("userFeedbackSetting", value);
+  return value;
+}
+
 $(document).ready(function () {
 
   mymap.on('moveend', function () {
     updateWays();
   });
   updateWays();
+
+  var $controllsToggleUserFeedback = $("#controlls_toggle_user_feedback");
+  if (getUserFeedbackSettingValue()) {
+    $controllsToggleUserFeedback.text("Deaktivieren");
+    $controllsToggleUserFeedback.addClass("active");
+  }
+  $controllsToggleUserFeedback.on("click", toggleUserFeedbackClick);
 });
 
 /*fetch('./data.json')
