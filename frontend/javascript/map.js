@@ -21,7 +21,7 @@ $( document ).ready(function(){
       var stateColor = ""
   
       var objOfNodes = nodes.map(function(obj) {
-        return Object.keys(obj).sort().reverse().map(function(key) { 
+        return Object.keys(obj).sort().map(function(key) { 
           return obj[key];
         });
       });
@@ -34,11 +34,8 @@ $( document ).ready(function(){
         return arr;
       });
 
-
-
       var index = 0.8
       function setPopUpColor(val){
-      
         var newStateColor
         if (val <= 0.3){
           newStateColor = stateColor = "#DF4848"
@@ -49,43 +46,28 @@ $( document ).ready(function(){
           newStateColor = stateColor = "#57C571"
         }
         return newStateColor
-        
       }  
       
-     
-
-      var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline', id: 'my_polyline' }).addTo(mymap);
+      console.log(arrOfNodes)
+      var polyline = L.polyline(arrOfNodes,  { id: 'my_polyline'}).addTo(mymap);
       polyline.bindPopup(
         "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
           "<div id='popUp' class=''>"+
-            "<p>"+ normalizedTags.robots +"</p>"+"<p>"+ normalizedTags.love +"</p>"+"<p>"+ normalizedTags.state +"</p>"
+            //"<p>"+ normalizedTags.smoothness +"</p>"+"<p>"+ normalizedTags.surface +"</p>"+"<p>"+ normalizedTags.name +"</p>"+"<p>"+ normalizedTags.source +"</p>"+"<p>"+ normalizedTags.maxspeed +"</p>"+"<p>"+ normalizedTags.highway +"</p>"+"<p>"+ normalizedTags.lit +"</p>"
           +"</div>"
         +"</div>"
         
-        , {
+      ,{
         showOnMouseOver: true
       });
-
-
-      
-      
-     
-
+      mymap.fitBounds(polyline.getBounds());
     });
   }
   
   $.getJSON("data.json", function(json) {
     createLines(json)
   });
-
-
-
- 
 });
-
-
-
-
 
 /*fetch('./data.json')
   .then(function(resp) {
