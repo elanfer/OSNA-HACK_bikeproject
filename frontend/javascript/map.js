@@ -74,21 +74,26 @@ $(document).ready(function () {
     return newStateColor
   }
 
-  function augmentPopup(metric, imagePrefix) {
-    imagePrefix = "assets/images/" + imagePrefix
+  function augmentPopup(metric, imagePrefix, ratingPrefixTexts, metricTypeText) {
+    imagePrefix = "assets/images/" + imagePrefix;
     if (metric != null) {
       var value = metric;
-      var iconUrl = "";
+      var iconUrl;
+      var ratingPrefixText;
       if (value < 0.33) {
-        iconUrl = imagePrefix+"Rot.svg"
+        iconUrl = imagePrefix+"Rot.svg";
+        ratingPrefixText = ratingPrefixTexts[0];
       } else if (value > 0.66) {
-        iconUrl = imagePrefix+"Orange.svg"
+        iconUrl = imagePrefix+"Gruen.svg";
+        ratingPrefixText = ratingPrefixTexts[2];
       } else {
-        iconUrl = imagePrefix+"Gruen.svg"
+        iconUrl = imagePrefix+"Orange.svg";
+        ratingPrefixText = ratingPrefixTexts[1];
       }
 
      return  "<div id='popUp-container'>" +
         "<img class='popUp-container-icon' title='" + value + "' src='" + iconUrl + "'></img>" +
+        "<div>" + ratingPrefixText + " " + metricTypeText + "</div>" +
         "</div>";
     }
     return "";
@@ -97,9 +102,7 @@ $(document).ready(function () {
   function createLines(dataArr) {
 
     dataArr.map(way => {
-      var nodes = way.nodes
-      var normalizedTags = way.normalizedTags
-      var stateColor = ""
+      var nodes = way.nodes;
       var indexNum = Math.floor((Math.random() * 10000) + 1);
 
       var objOfNodes = nodes.map(function (obj) {
@@ -129,10 +132,10 @@ $(document).ready(function () {
         "<div>Straßenname: " + way.osmTags.name + "</div>" +
         "</div>";
 
-      popUpHead = popUpHead + augmentPopup(way.customTags.norm_street, "Verkehr")
-      popUpHead = popUpHead + augmentPopup(way.customTags.norm_speed_car, "Speed")
-      popUpHead = popUpHead + augmentPopup(way.customTags.norm_construction, "Construction")
-      popUpHead = popUpHead + augmentPopup(way.customTags.norm_noise, "Volume")
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_street, "Boden", ["schlechter", "mäßiger", "guter"], "Bodenbelag");
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_speed_car, "Speed", ["schnelle", "mäßig schnelle", "langsame"], "Autos");
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_construction, "Construction", ["hinderliche", "nicht störende", "keine"], "Baustellen");
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_noise, "Volume", ["viel", "mäßig", "wenig"], "Lärmbelastung");
 
       if(way.customTags.userFeedback === 0){
         popUpHead = popUpHead + "<div id='popUp-container'>" +
