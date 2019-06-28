@@ -1,14 +1,12 @@
 package de.osnahack.bikeflow.jpa.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "custom_tags")
 public class CustomTag {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "custom_id")
     private Long customId;
 
@@ -35,5 +33,13 @@ public class CustomTag {
 
     public void setTagValue(String tagValue) {
         this.tagValue = tagValue;
+    }
+
+    public Long getWayId() {
+        return wayId;
+    }
+
+    public void setWayId(Long wayId) {
+        this.wayId = wayId;
     }
 }

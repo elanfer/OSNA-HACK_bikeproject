@@ -37,6 +37,16 @@ public class WayController {
         }
     }
 
+    @RequestMapping(value="/setUserFeedback")
+    @GetMapping
+    public void setUserFeedback(@RequestParam String wayId){
+        CustomTag customTag = new CustomTag();
+        customTag.setTagName("userFeedback");
+        customTag.setTagValue("true");
+        customTag.setWayId(Long.valueOf(wayId));
+        customTagRepository.save(customTag);
+    }
+
     @CrossOrigin(origins = "*")
     @RequestMapping("/ways")
     @GetMapping
@@ -48,6 +58,7 @@ public class WayController {
             Way way = new Way(nodes, wayEntity.getTags());
             way.setType("way");
             way.setState(wayEntity.getState());
+            way.setWayId(wayEntity.getId().toString());
             results.add(way);
             List<String> geoJsonsOfWays = nodeRepository.findByIdsAndOrderByLatLon(wayEntity.getId());
             ObjectMapper objectMapper = new ObjectMapper();
@@ -78,6 +89,13 @@ public class WayController {
     @GetMapping
     public List<WayEntity> dataExport() {
         List<WayEntity> all = waysRepository.findAll();
+        for (WayEntity wayEntity : all) {
+            List<CustomTag> customTags = customTagRepository.findByWayId(wayEntity.getId());
+            for (CustomTag customTag : customTags) {
+                wayEntity.getTags().put(customTag.getTagName(), customTag.getTagValue());
+            }
+        }
+
         return all;
     }
 }
