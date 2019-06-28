@@ -1,3 +1,4 @@
+
 .leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{
   border:none !important;
 margin-left: 92vw;
@@ -43,9 +44,25 @@ margin-right: auto !important;
   display: none;
 }
 
-#filterButton {
-  float: right;
-  margin-top: 20vh;
-  margin-left: 80vw;
+#filterButtonContainer {
+  top: 50%;
+left: 50%;
+  position: relative;
   z-index: 20000000 !important;
+  margin-bottom: 50vh;
+}
+
+#filterButton {
+  position: absolute;
+}
+
+.buttonWrapper {
+  position: absolute;
+  top: 70vh;
+  left: 92vw;
+  z-index: 2000000000;
+}
+
+i {
+  color: white;
 }

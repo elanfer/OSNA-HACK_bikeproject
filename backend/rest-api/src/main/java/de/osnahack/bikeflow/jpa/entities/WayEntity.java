@@ -27,6 +27,8 @@ public class WayEntity {
     @Column(columnDefinition = "hstore")
     private Map<String, String> tags = new HashMap<>();
 
+    private Float state;
+
     public Long getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class WayEntity {
 
     public void setTags(Map<String, String> tags) {
         this.tags = tags;
+    }
+
+    public Float getState() {
+        return state;
+    }
+
+    public void setState(Float state) {
+        this.state = state;
     }
 }

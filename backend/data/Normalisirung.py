@@ -81,65 +81,117 @@ def street_conditon(tag):
 
 
 
-def noise(tags):
-    for tag in tags:
-        key = ""
-        if key == "noise": #TODO set key name
-            return (value - 1)/(5-1)
+def noise(tag):
+    if "noise" in tag:
+        value = tag["noise"] #TODO set key name
+        return 1 - (value - 1)/(5-1)
 
 
-def speed(tags):
-    for tag in tags:
-        key = ""
-        if key == "speed": #TODO set key name
-            try:
-                int_value = int(value)
-            except Exception:
-                int_value = 5
-            return (int_value - 5)/(160-5)
+def speed(tag):
+    if "maxspeed" in tag:
+        value = tag["maxspeed"]
+        try:
+            int_value = int(value)
+        except Exception:
+            int_value = 5
+        if int_value > 70:
+            int_value = 70
+        return 1 - (int_value - 5)/(70-5)
 
-def workground(tags):
-    for tag in tags:
-        key = ""
-        if key == "workground":
-            return value
-
-def way(id, tags):
-    # jonin der Tags
-
-    #tags = [("key", "Test"), ("key2", "test2")]
-    street_data, not_bike_way_data = street_conditon(tags)
-    if street_data !=  None:
-        #print(str(id))
-        #print(str(not_bike_way_data))
-        print('{"' + str(id) + '": ' + str(street_data) + '},')
-
-    return street_data
-    #noise_data = noise(tags)
-    #speed_data = speed(tags)
-    #workground_data = workground(tags)
+def workground(tag):
+    if "workground" in tag:
+        value = tag["workground"]
+        return 1 - value
 
 
-    #TODO daten in die Datenbank
+def gewichtet(weg, geschwin, lautst=0, baust=0):
+    if not weg:
+        weg = 0
+    if not geschwin:
+        geschwin = 0
+    if not lautst:
+        lautst = 0
+    if not baust:
+        baust = 0
+    return (3*weg + 5*geschwin + 2*lautst + 1*baust)/8 # 11
+
+
+def count(dic):
+    i = 0
+    n0 = 0
+    n1 = 0
+    n2 = 0
+    n3 = 0
+
+    street = 0
+    speed = 0
+    noise = 0
+    for d in dic.values():
+        i = i + 1
+        n = 0
+        if not d["street"] == None:
+            street = street + 1
+            n = n + 1
+        if not d["speed"] == None:
+            n = n + 1
+            speed = speed + 1
+        if not d["noise"] == None:
+            n = n + 1
+            noise = noise + 1
+
+        if n == 0:
+            n0 = n0 + 1
+        if n == 1:
+            n1 = n1 + 1
+        if n == 2:
+            n2 = n2 + 1
+        if n == 3:
+            n3 = n3 + 1
+
+    print("Anzahl: " , i)
+    print("#################")
+    print("street: " , street)
+    print("speed: " , speed)
+    print("noise: " , noise)
+    print("#################")
+    print("0 Daten " , n0)
+    print("1 Daten: " , n1)
+    print("2 Daten: " , n2)
+    print("3 Daten: " , n3)
+
+
 
 def main():
     i = 0
+    dic = {}
+
     with open('waysExport_new.json') as f:
         data = json.load(f)
 
-        for w in data:
-            #print(w["id"])
-            #print(w["tags"])
-            if w["tags"] != None:
-                x = way(w["id"], w["tags"])
-            #z = w["tags"]
-            #if z != None and 'highway' in z:
-            #    print(z["highway"])
-                #if x != None:
-                #    i = i + x
-        #print( str(i))
+    for w in data:
+        items = {}
+        id = w["id"]
+        tags = w["tags"]
 
-    #TODO itarieren über die ways
+        if tags != None:
+            street_data, not_bike_way_data = street_conditon(tags)
+            speed_data = speed(tags)
+            workground_data = workground(tags)
+            noise_data = noise(tags)
+            if speed_data !=  None or street_data != None or workground_data != None or noise_data != None:
+                items["street"] = street_data
+                items["speed"] = speed_data
+                items["workground"] = workground_data
+                items["noise"] = noise_data
+                items["calc"] = gewichtet(street_data, speed_data)
+
+                dic[id] =items
+
+
+    #count(dic)
+    print(json.dumps(dic))
+
+    #TODO daten in die Datenbank
 
 if __name__ == '__main__':
     main()
