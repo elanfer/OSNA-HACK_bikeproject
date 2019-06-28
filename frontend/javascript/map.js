@@ -111,7 +111,10 @@ function buildRatingButton(wayId) {
  * @param {int} wayId The way ID.
  */
 function rateWay(wayId) {
-  $.get("http://10.229.54.121:8080/setUserFeedback?wayId=" + wayId);
+  $.get("http://10.229.54.121:8080/setUserFeedback?wayId=" + wayId, function( data ) {
+    updateWays();
+  });
+
 }
 
 function createLines(dataArr) {
@@ -175,6 +178,7 @@ function toggleUserFeedbackClick(event) {
   var settingValue = setUserFeedbackSettingValue(!getUserFeedbackSettingValue());
   $controllsToggleUserFeedback.text(settingValue ? "Deaktivieren" : "Aktivieren");
   $controllsToggleUserFeedback.toggleClass("active");
+  updateWays();
 }
 
 function getUserFeedbackSettingValue() {

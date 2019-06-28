@@ -37,12 +37,13 @@ public class WayController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value="/setUserFeedback")
     @GetMapping
     public void setUserFeedback(@RequestParam String wayId){
         CustomTag customTag = new CustomTag();
         customTag.setTagName("userFeedback");
-        customTag.setTagValue("true");
+        customTag.setTagValue("0");
         customTag.setWayId(Long.valueOf(wayId));
         customTagRepository.save(customTag);
     }
