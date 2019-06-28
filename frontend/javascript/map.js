@@ -19,6 +19,7 @@ $( document ).ready(function(){
       var nodes = way.nodes
       var normalizedTags = way.normalizedTags
       var stateColor = ""
+      var indexNum = Math.floor((Math.random() * 10000) + 1);
   
       var objOfNodes = nodes.map(function(obj) {
         return Object.keys(obj).sort().map(function(key) { 
@@ -34,8 +35,9 @@ $( document ).ready(function(){
         return arr;
       });
 
-      var index = 0.8
+      var index = 0.1
       function setPopUpColor(val){
+        var polyLine = document.getElementsByClassName('my_polyline' + indexNum + '');
         var newStateColor
         if (val <= 0.3){
           newStateColor = stateColor = "#DF4848"
@@ -45,11 +47,12 @@ $( document ).ready(function(){
           console.log('val', val)
           newStateColor = stateColor = "#57C571"
         }
+        console.log(polyLine[0].style.stroke = newStateColor)
         return newStateColor
       }  
       
       console.log(arrOfNodes)
-      var polyline = L.polyline(arrOfNodes,  { id: 'my_polyline'}).addTo(mymap);
+      var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline' + indexNum + ''}).addTo(mymap);
       polyline.bindPopup(
         "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
           "<div id='popUp' class=''>"+
