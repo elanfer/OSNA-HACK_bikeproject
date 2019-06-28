@@ -104,7 +104,7 @@ def workground(tag):
         return 1 - value
 
 
-def gewichtet(weg, geschwin, lautst=0, baust=0):
+def gewichtet(weg, geschwin, lautst, baust=0):
     if not weg:
         weg = 0
     if not geschwin:
@@ -196,16 +196,16 @@ def main():
             noise_data = noise(tags)
             if speed_data !=  None or street_data != None or workground_data != None or noise_data != None:
                 items["street"] = street_data
-                items["speed"] = speed_data
-                items["workground"] = workground_data
+                items["speed_car"] = speed_data
+                items["construction"] = workground_data
                 items["noise"] = noise_data
-                items["calc"] = gewichtet(street_data, speed_data)
+                items["default_calc"] = gewichtet(street_data, speed_data, noise_data)
 
                 dic[id] =items
 
 
-    #count(dic)
-    print(json.dumps(dic))
+    count(dic)
+    #print(json.dumps(dic))
 
     #TODO daten in die Datenbank
 
