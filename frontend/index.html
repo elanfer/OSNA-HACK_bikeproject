@@ -13,17 +13,32 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
   <link rel="stylesheet" href="assets/css/map.css">
-    <link rel="stylesheet" href="assets/css/ui.css">
+  <link rel="stylesheet" href="assets/css/ui.css">
   <title>Bike Project</title>
 </head>
 <body>
 
-  <div id="mapid">
-    <div class="buttonWrapper">
-      <button onclick="" id="filterButton" class="leaflet-control-zoom-in"><i class="fas fa-cog"></i></button>
+  
+    <div id="mapid">
+      <div class="buttonWrapper">
+        <button onclick="toggle()" id="filterButton" class="leaflet-control-zoom-in"><i class="fas fa-cog"></i></button>
       </div>
     </div>
-  </div>
+  
+    
+      <div class="controlls" id="settings">
+        <img src="assets/images/LogoUrbanBikingWeiß.svg" style="width: 60px; position: absolute; right: 0; top: 0; padding:1rem;" alt="">
+        <div class="controlls_header">
+          Radweg Einstellungen
+        </div>
+        <div class="controlls_settings">
+          <button class="controlls_settings_red" id="red" onclick="disableLine('rgb(223, 72, 72)')">Rot</button> 
+          <button class="controlls_settings_orange" id="orange" onclick="disableLine('rgb(223, 72, 72)')">Orange</button> 
+          <button class="controlls_settings_green" id="green" onclick="disableLine('rgb(223, 72, 72)')">Green</button>   
+        </div>
+      </div>
+ 
+  
 
 
 
@@ -38,6 +53,5 @@
 
   <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
   <script src="javascript/map.js"></script>
-  <script src="javascript/ui.js"></script>
 </body>
 </html>

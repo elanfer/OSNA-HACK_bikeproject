@@ -1,16 +1,16 @@
-#mapid {
-  height:100vh;
-  position: relative;
+#mapid { 
+  height:100vh; 
+ 
 }
 
 path{
   stroke: #DF4848;
   fill: none;
-  stroke-width: 5;
+  stroke-width: 5; 
 }
 
 path:hover{
-  stroke-width: 10;
+  stroke-width: 10; 
 }
 
 .leaflet-popup-content-wrapper{
@@ -24,13 +24,17 @@ path:hover{
   overflow: unset;
 }
 
-
- .leaflet-popup-close-button {
-display:none;
+.leaflet-top, .leaflet-popup-close-button {
+  display: none;
 }
 
 .leaflet-popup-content{
   margin: 0;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip{
+  background: transparent;
+  box-shadow: unset;
 }
 
 #popUp{
@@ -74,3 +78,26 @@ display:none;
   background: black;
   padding: 1rem;
 }
+
+.controlls{
+  padding: 0;
+  background: rgba(0, 0, 0, 0.445);
+  z-index: 10000000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  transition: width 0.3s  ease-in-out;
+}
+
+.bp{ 
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+

@@ -15,13 +15,27 @@ function disableLine(color){
   var arr = [].slice.call(paths);
   
   arr.map(path => {
+   
     console.log(path.style.stroke)
-    
     if(path.style.stroke == color){
-      console.log(path.style)
-      path.style.display = "none"
+      
+      path.style.display = "none";
     }
   })
+}
+
+var active = false;
+function toggle (){
+  var el = document.getElementById('settings')
+  if(active){
+    el.style.width = "0px"
+    el.style.padding = "0rem;"
+    active = false
+  } else {
+    el.style.width = "300px"
+    el.style.padding = "2rem;"
+    active = true
+  }
 }
 
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA', {
