@@ -1,0 +1,6 @@
+CREATE TABLE public.custom_tags (
+    custom_id BIGSERIAL,
+    way_id bigint,
+    tag_name text,
+    tag_value text
+)
