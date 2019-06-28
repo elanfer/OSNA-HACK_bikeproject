@@ -1,27 +1,27 @@
 package de.osnahack.bikeflow.dto;
 
 public class Node {
-    private Float lat;
-    private Float lon;
+    private Float latitude;
+    private Float longitude;
 
     public Node(Float lat, Float lon) {
-        this.lat = lat;
-        this.lon = lon;
+        this.latitude = lat;
+        this.longitude = lon;
     }
 
-    public Float getLat() {
-        return lat;
+    public Float getLatitude() {
+        return latitude;
     }
 
-    public void setLat(Float lat) {
-        this.lat = lat;
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
     }
 
-    public Float getLon() {
-        return lon;
+    public Float getLongitude() {
+        return longitude;
     }
 
-    public void setLon(Float lon) {
-        this.lon = lon;
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
     }
 }

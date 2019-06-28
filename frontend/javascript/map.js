@@ -36,7 +36,11 @@ $( document ).ready(function(){
       var stateColor = ""
 
       var objOfNodes = nodes.map(function(obj) {
+<<<<<<< HEAD
         return Object.keys(obj).sort().reverse().map(function(key) {
+=======
+        return Object.keys(obj).sort().map(function(key) { 
+>>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
           return obj[key];
         });
       });
@@ -49,11 +53,12 @@ $( document ).ready(function(){
         return arr;
       });
 
-
-
       var index = 0.8
       function setPopUpColor(val){
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
         var newStateColor
         if (val <= 0.3){
           newStateColor = stateColor = "#DF4848"
@@ -64,18 +69,26 @@ $( document ).ready(function(){
           newStateColor = stateColor = "#57C571"
         }
         return newStateColor
+<<<<<<< HEAD
 
       }
 
 
 
       var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline', id: 'my_polyline' }).addTo(mymap);
+=======
+      }  
+      
+      console.log(arrOfNodes)
+      var polyline = L.polyline(arrOfNodes,  { id: 'my_polyline'}).addTo(mymap);
+>>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
       polyline.bindPopup(
         "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
           "<div id='popUp' class=''>"+
-            "<p>"+ normalizedTags.robots +"</p>"+"<p>"+ normalizedTags.love +"</p>"+"<p>"+ normalizedTags.state +"</p>"
+            //"<p>"+ normalizedTags.smoothness +"</p>"+"<p>"+ normalizedTags.surface +"</p>"+"<p>"+ normalizedTags.name +"</p>"+"<p>"+ normalizedTags.source +"</p>"+"<p>"+ normalizedTags.maxspeed +"</p>"+"<p>"+ normalizedTags.highway +"</p>"+"<p>"+ normalizedTags.lit +"</p>"
           +"</div>"
         +"</div>"
+<<<<<<< HEAD
 
         , {
         showOnMouseOver: true
@@ -86,21 +99,27 @@ $( document ).ready(function(){
 
 
 
+=======
+        
+      ,{
+        showOnMouseOver: true
+      });
+      mymap.fitBounds(polyline.getBounds());
+>>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
     });
   }
 
   $.getJSON("data.json", function(json) {
     createLines(json)
   });
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
 });
-
-
-
-
 
 /*fetch('./data.json')
   .then(function(resp) {
