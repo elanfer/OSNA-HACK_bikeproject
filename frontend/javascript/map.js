@@ -50,7 +50,18 @@ $( document ).ready(function(){
         }
         return arr;
       });
+      
+      function calcIndex(){
+        var distance = way.normalizedTags * 3
+        var noise = way.normalizedTags * 1
+        var speed = way.normalizedTags * 5
+        var construction = way.normalizedTags * 1
 
+        var index = distance + noise + speed + construction
+        index = index / 10
+      }
+
+      console.log(way.normalizedTags)
       var index = 0.1
       function setPopUpColor(val){
 
@@ -67,14 +78,9 @@ $( document ).ready(function(){
         }
         console.log(polyLine[0].style.stroke = newStateColor)
         return newStateColor
-
+        
 
       }
-
-
-
-      
-      console.log(arrOfNodes)
 
       var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline' + indexNum + ''}).addTo(mymap);
 
