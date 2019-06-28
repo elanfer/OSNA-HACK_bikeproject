@@ -27,7 +27,7 @@ function disableLine(color){
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA', {
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
   maxZoom: 100,
-  id: 'larathle.Light-copy',
+  id: 'mapbox.light-v9',
   accessToken: 'pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA'
 }).addTo(mymap);
 
@@ -37,6 +37,8 @@ this.mymap.locate({
 
 L.marker([e.latitude, e.longitude], {icon: customMarker}).addTo(this.mymap);
 });
+
+
 
 $( document ).ready(function(){
 
@@ -51,10 +53,10 @@ $( document ).ready(function(){
       var normalizedTags = way.normalizedTags
       var stateColor = ""
       var indexNum = Math.floor((Math.random() * 10000) + 1);
-  
+
 
       var objOfNodes = nodes.map(function(obj) {
-        return Object.keys(obj).sort().map(function(key) { 
+        return Object.keys(obj).sort().map(function(key) {
           return obj[key];
         });
       });
@@ -66,7 +68,7 @@ $( document ).ready(function(){
         }
         return arr;
       });
-      
+
       function calcIndex(){
         var distance = way.normalizedTags * 3
         var noise = way.normalizedTags * 1
@@ -100,22 +102,24 @@ $( document ).ready(function(){
 
       var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline' + indexNum + ''}).addTo(mymap);
 
+
+      var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline', id: 'my_polyline' }).addTo(mymap);
       polyline.bindPopup(
         "<div id='popUp-header'>Urgent</div>"+
           "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
             "<div id='popUp-container-wrapper'>"+
-              "<div id='popUp-container'>"+ 
+              "<div id='popUp-container'>"+
                 "<img src=''></img>"+
                 "<div>"+ 'normalizedTags.smoothness' +"</div>"+
               "</div>"+
-              "<div id='popUp-container'>"+ 
+              "<div id='popUp-container'>"+
                 "<img src=''></img>"+
                 "<div>"+ 'normalizedTags.smoothness' +"</div>"+
               "</div>"+
             "</div>"+
           "</div>"
         +"</div>"
-        
+
       ,{
         showOnMouseOver: true
       });

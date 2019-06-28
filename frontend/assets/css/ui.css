@@ -1,0 +1,68 @@
+
+.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{
+  border:none !important;
+margin-left: 92vw;
+margin-top: 80vh !important;
+float: right !important;
+
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip{
+  background: transparent;
+  box-shadow: unset;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out{
+  background-color: black  !important;
+  border:none !important;
+  border-radius: 50% !important;
+  margin: 10% !important;
+  width: 4vh !important;
+  height: 4vh !important;
+}
+
+.leaflet-control-zoom-in a, .leaflet-control-zoom-out a, .leaflet-container a{
+color: white !important;
+display: flex !important;
+align-items: center !important;
+text-align: center !important;
+margin-left: auto !important;
+margin-right: auto !important;
+}
+
+
+.leaflet-control-zoom-in{
+  margin-bottom: 6vh !important;
+
+}
+
+.leaflet-control-zoom-out{
+
+}
+
+.leaflet-bottom {
+  display: none;
+}
+
+#filterButtonContainer {
+  top: 50%;
+left: 50%;
+  position: relative;
+  z-index: 20000000 !important;
+  margin-bottom: 50vh;
+}
+
+#filterButton {
+  position: absolute;
+}
+
+.buttonWrapper {
+  position: absolute;
+  top: 70vh;
+  left: 92vw;
+  z-index: 2000000000;
+}
+
+i {
+  color: white;
+}
