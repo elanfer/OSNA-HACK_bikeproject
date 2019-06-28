@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<osm version="0.6">
+  <node id="-102235" lat="52.29117832206" lon="8.05997306435" />
+  <way id="-718350125">
+    <nd ref="-102235" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102236" lat="52.28493770386" lon="8.0422826366" />
+  <way id="-172154644">
+    <nd ref="-102236" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102237" lat="52.26745212031" lon="8.02001821836" />
+  <way id="1156110924">
+    <nd ref="-102237" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102238" lat="52.27137876672" lon="8.05009332727" />
+  <way id="-1537681295">
+    <nd ref="-102238" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102239" lat="52.25664511571" lon="7.98826010503" />
+  <way id="1123510614">
+    <nd ref="-102239" />
+    <tag k="BEEINTRAEC" v="Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage" />
+  </way>
+  <node id="-102240" lat="52.26950796188" lon="8.04911184912" />
+  <way id="734554837">
+    <nd ref="-102240" />
+    <tag k="BEEINTRAEC" v="Einsatz Lichtsignalanlage" />
+  </way>
+  <node id="-102241" lat="52.27543957435" lon="8.02207434002" />
+  <way id="1925206881">
+    <nd ref="-102241" />
+    <tag k="BEEINTRAEC" v="Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage" />
+  </way>
+  <node id="-102242" lat="52.27005747395" lon="7.98080584019" />
+  <way id="994216112">
+    <nd ref="-102242" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102243" lat="52.24646435686" lon="8.05504616986" />
+  <way id="-1112062422">
+    <nd ref="-102243" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102244" lat="52.28244141233" lon="8.07930614009" />
+  <way id="952994750">
+    <nd ref="-102244" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102245" lat="52.26753856868" lon="8.0570220123" />
+  <way id="-2134955039">
+    <nd ref="-102245" />
+    <tag k="BEEINTRAEC" v="Vollsperrung, Einbahnstraße" />
+  </way>
+  <node id="-102246" lat="52.2501849364" lon="8.10099950546" />
+  <way id="-374359581">
+    <nd ref="-102246" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102247" lat="52.2809824761" lon="8.05779796076" />
+  <way id="-1118479355">
+    <nd ref="-102247" />
+    <tag k="BEEINTRAEC" v="Vollsperrung" />
+  </way>
+  <node id="-102248" lat="52.31642275946" lon="7.99363274683" />
+  <way id="-785269597">
+    <nd ref="-102248" />
+    <tag k="BEEINTRAEC" v="Einsatz Lichtsignalanlage" />
+  </way>
+  <node id="-102249" lat="52.29735820717" lon="8.10672123405" />
+  <way id="-465434769">
+    <nd ref="-102249" />
+    <tag k="BEEINTRAEC" v="Verengung 2 auf 1, Spurverlegung" />
+  </way>
+  <node id="-102250" lat="52.30412599528" lon="8.03621319012" />
+  <way id="-282419266">
+    <nd ref="-102250" />
+    <tag k="BEEINTRAEC" v="Einsatz Lichtsignalanlage, Spurverlegung" />
+  </way>
+  <node id="-102251" lat="52.27531812468" lon="8.03937096861" />
+  <way id="1823692698">
+    <nd ref="-102251" />
+    <tag k="BEEINTRAEC" v="Verengung 2 auf 1" />
+  </way>
+  <node id="-102252" lat="52.2616587193" lon="8.00149311569" />
+  <way id="-854272874">
+    <nd ref="-102252" />
+    <tag k="BEEINTRAEC" v="Verengung 2 auf 1" />
+  </way>
+</osm>

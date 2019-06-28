@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='false' generator='JOSM'>
+  <node id='-102235' lat='52.29117832206' lon='8.05997306435'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/08/14 00:00:00.000' />
+    <tag k='DATUMVON' v='2016/12/03 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Straßenbau' />
+    <tag k='OBJECTID' v='234432' />
+    <tag k='PRESSEINFO' v='Vollsperrung ab Einmündung Luhmannstr. bis nach der Einmündung Dr.-Pelz-Str.' />
+    <tag k='STANDORT' v='Knollstr. (Luhmannstr. bis Dr-.Pelz-Str.' />
+    <tag k='X' v='4358869.0' />
+    <tag k='Y' v='5.7938408E7' />
+  </node>
+  <node id='-102236' lat='52.28493770386' lon='8.0422826366'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/08/02 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/06/11 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Straßenbau' />
+    <tag k='OBJECTID' v='234433' />
+    <tag k='PRESSEINFO' v='Sperrung im Verlauf Bramscher Straße und Süntelstraße. Verkehrskonzeptionelle Anpassungen des Knotenpunktes.' />
+    <tag k='STANDORT' v='Bramscher Str. / Süntelstraße (Knotenpunkt)' />
+    <tag k='X' v='4346712.0' />
+    <tag k='Y' v='5.7931625E7' />
+  </node>
+  <node id='-102237' lat='52.26745212031' lon='8.02001821836'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/07/12 00:00:00.000' />
+    <tag k='DATUMVON' v='2018/03/26 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Kanalbau' />
+    <tag k='OBJECTID' v='234434' />
+    <tag k='PRESSEINFO' v='Vollsperrung in mehreren Abschnitten, Busse umfahren den Bereich.' />
+    <tag k='STANDORT' v='Blumenhaller Weg 47 bis 88' />
+    <tag k='X' v='4331262.0' />
+    <tag k='Y' v='5.791238E7' />
+  </node>
+  <node id='-102238' lat='52.27137876672' lon='8.05009332727'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/08/01 00:00:00.000' />
+    <tag k='DATUMVON' v='2018/05/22 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Rohrnetz' />
+    <tag k='OBJECTID' v='234435' />
+    <tag k='PRESSEINFO' v='Vollsperrung, Linienverkehr fährt Umleitungen, Infos unter https://www.vos.info/ oder 0541-20022211' />
+    <tag k='STANDORT' v='Johannisstr. 58 bis 91' />
+    <tag k='X' v='4351842.0' />
+    <tag k='Y' v='5.7916474E7' />
+  </node>
+  <node id='-102239' lat='52.25664511571' lon='7.98826010503'>
+    <tag k='BEEINTRAEC' v='Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage' />
+    <tag k='DATUMBIS' v='2019/06/21 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/06/17 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Hausanschluss, Kanalbau' />
+    <tag k='OBJECTID' v='234436' />
+    <tag k='PRESSEINFO' v='Inanspruchnahme einer Fahrspur infolge Kanalbauarbeiten. Halbseitige Sperrung mit Verkehrsregelung über Ampelsteuerung ab dem 1' />
+    <tag k='STANDORT' v='Große Schulstr. 17a' />
+    <tag k='X' v='4309423.0' />
+    <tag k='Y' v='5.7900658E7' />
+  </node>
+  <node id='-102240' lat='52.26950796188' lon='8.04911184912'>
+    <tag k='BEEINTRAEC' v='Einsatz Lichtsignalanlage' />
+    <tag k='DATUMBIS' v='2019/07/19 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/06/24 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Hochbaustelle' />
+    <tag k='OBJECTID' v='234437' />
+    <tag k='PRESSEINFO' v='Halbseitige Einengung, Anpassung der Ampel' />
+    <tag k='STANDORT' v='Süsterstr. 21' />
+    <tag k='X' v='4351145.0' />
+    <tag k='Y' v='5.7914402E7' />
+  </node>
+  <node id='-102241' lat='52.27543957435' lon='8.02207434002'>
+    <tag k='BEEINTRAEC' v='Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage' />
+    <tag k='DATUMBIS' v='2019/07/26 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/06/17 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Hausanschluss, Kanalbau' />
+    <tag k='OBJECTID' v='234438' />
+    <tag k='PRESSEINFO' v='Halbseitige Fahrbahnsperrung mit Ampelanlage aufgrund eines Kanalhausanschlusses vom 24.06 bis 04.07.2019' />
+    <tag k='STANDORT' v='Caprivistr. 3' />
+    <tag k='X' v='4332785.0' />
+    <tag k='Y' v='5.7921245E7' />
+  </node>
+  <node id='-102242' lat='52.27005747395' lon='7.98080584019'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/06/28 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/06/17 00:00:00.000' />
+    <tag k='MERKMALKUR' v='OSB-Asphalt-Großmaßnahme, S...' />
+    <tag k='OBJECTID' v='234439' />
+    <tag k='PRESSEINFO' v='Vollsperrung infolge von Asphaltierungsarbeiten zum Zweck der Straßenunterhaltung.' />
+    <tag k='STANDORT' v='Zum Flugplatz 19 (500 m)' />
+    <tag k='X' v='4304545.0' />
+    <tag k='Y' v='5.7915647E7' />
+  </node>
+  <node id='-102243' lat='52.24646435686' lon='8.05504616986'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/09/30 00:00:00.000' />
+    <tag k='DATUMVON' v='2017/05/29 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Kanalbau, Straßenneubau' />
+    <tag k='OBJECTID' v='234440' />
+    <tag k='STANDORT' v='Paradiesweg' />
+    <tag k='X' v='4354860.0' />
+    <tag k='Y' v='5.7888719E7' />
+  </node>
+  <node id='-102244' lat='52.28244141233' lon='8.07930614009'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/07/31 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/05/20 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Kanalbau' />
+    <tag k='OBJECTID' v='234441' />
+    <tag k='STANDORT' v='Borsigstr. 32 - 52' />
+    <tag k='X' v='4371931.0' />
+    <tag k='Y' v='5.7928521E7' />
+  </node>
+  <node id='-102245' lat='52.26753856868' lon='8.0570220123'>
+    <tag k='BEEINTRAEC' v='Vollsperrung, Einbahnstraße' />
+    <tag k='DATUMBIS' v='2019/12/31 00:00:00.000' />
+    <tag k='DATUMVON' v='2018/02/12 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Brückenbau' />
+    <tag k='OBJECTID' v='234442' />
+    <tag k='PRESSEINFO' v='Einbahnstraßenführung stadteinwärts, Vollsperrung Schepelerstraße, Verkehrsführungen im Umfeld (Dammstr., Holtstr.) geändert,' />
+    <tag k='STANDORT' v='An der Petersburg (Schepelerstr. bis Dammstr.)' />
+    <tag k='X' v='4356514.0' />
+    <tag k='Y' v='5.7912141E7' />
+  </node>
+  <node id='-102246' lat='52.2501849364' lon='8.10099950546'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/07/31 00:00:00.000' />
+    <tag k='DATUMVON' v='2018/11/12 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Stromversorgung' />
+    <tag k='OBJECTID' v='234443' />
+    <tag k='STANDORT' v='Hickinger Weg 1 bis 35' />
+    <tag k='X' v='4386284.0' />
+    <tag k='Y' v='5.7892458E7' />
+  </node>
+  <node id='-102247' lat='52.2809824761' lon='8.05779796076'>
+    <tag k='BEEINTRAEC' v='Vollsperrung' />
+    <tag k='DATUMBIS' v='2019/04/29 00:00:00.000' />
+    <tag k='DATUMVON' v='2018/09/24 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Straßenneubau' />
+    <tag k='OBJECTID' v='234444' />
+    <tag k='STANDORT' v='Schlachthofstr.' />
+    <tag k='X' v='4357238.0' />
+    <tag k='Y' v='5.7927087E7' />
+  </node>
+  <node id='-102248' lat='52.31642275946' lon='7.99363274683'>
+    <tag k='BEEINTRAEC' v='Einsatz Lichtsignalanlage' />
+    <tag k='DATUMBIS' v='2019/06/28 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/05/27 00:00:00.000' />
+    <tag k='MERKMALKUR' v='OSB-Pflaster-Großmaßnahme' />
+    <tag k='OBJECTID' v='234445' />
+    <tag k='STANDORT' v='Am Stollenbach (Am Weingarten bis Temmestr.)' />
+    <tag k='X' v='4314014.0' />
+    <tag k='Y' v='5.7967094E7' />
+  </node>
+  <node id='-102249' lat='52.29735820717' lon='8.10672123405'>
+    <tag k='BEEINTRAEC' v='Verengung 2 auf 1, Spurverlegung' />
+    <tag k='DATUMBIS' v='2019/08/10 00:00:00.000' />
+    <tag k='DATUMVON' v='2015/06/08 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Straßenneubau' />
+    <tag k='OBJECTID' v='234446' />
+    <tag k='PRESSEINFO' v='Einschränkungen und Rückstau möglich, weiträumige Umfahrung empfohlen' />
+    <tag k='STANDORT' v='Bremer Straße (Knoten B51 - A33)' />
+    <tag k='X' v='4390837.0' />
+    <tag k='Y' v='5.7944878E7' />
+  </node>
+  <node id='-102250' lat='52.30412599528' lon='8.03621319012'>
+    <tag k='BEEINTRAEC' v='Einsatz Lichtsignalanlage, Spurverlegung' />
+    <tag k='DATUMBIS' v='2019/06/07 00:00:00.000' />
+    <tag k='DATUMVON' v='2018/06/25 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Rohrnetz' />
+    <tag k='OBJECTID' v='234447' />
+    <tag k='STANDORT' v='Oldenburger Landstraße II BA (1350)' />
+    <tag k='X' v='4342856.0' />
+    <tag k='Y' v='5.7953022E7' />
+  </node>
+  <node id='-102251' lat='52.27531812468' lon='8.03937096861'>
+    <tag k='BEEINTRAEC' v='Verengung 2 auf 1' />
+    <tag k='DATUMBIS' v='2019/08/10 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/06/11 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Kanalbau' />
+    <tag k='OBJECTID' v='234448' />
+    <tag k='PRESSEINFO' v='Inanspruchnahme mehrerer Fahrspuren auf der Dielingerstraße und dem Heger-Tor-Wall aufgrund von Kanalbauarbeiten vom 11.06 bis' />
+    <tag k='STANDORT' v='Heger-Tor-Wall / Dielinger Straße' />
+    <tag k='X' v='4344584.0' />
+    <tag k='Y' v='5.7920952E7' />
+  </node>
+  <node id='-102252' lat='52.2616587193' lon='8.00149311569'>
+    <tag k='BEEINTRAEC' v='Verengung 2 auf 1' />
+    <tag k='DATUMBIS' v='2019/07/19 00:00:00.000' />
+    <tag k='DATUMVON' v='2019/04/15 00:00:00.000' />
+    <tag k='MERKMALKUR' v='Stromversorgung' />
+    <tag k='OBJECTID' v='234449' />
+    <tag k='PRESSEINFO' v='Reduzierung von Fahrspuren, Einfahrt in den Hörner Weg gesperrt, Bushaltestelle verlegt unter die BAB' />
+    <tag k='STANDORT' v='Lengericher Ldstr. 7 bis 13 (330 m), An der Blankenburg bis Töpferstraße' />
+    <tag k='X' v='4318532.0' />
+    <tag k='Y' v='5.7906109E7' />
+  </node>
+</osm>
