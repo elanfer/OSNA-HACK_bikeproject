@@ -87,6 +87,7 @@ display:none;
 #popUp-container{
   display: flex;
   background: black;
+  align-items: center;
 }
 
 #popUp-container img{
