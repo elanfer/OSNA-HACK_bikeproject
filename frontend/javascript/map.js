@@ -115,10 +115,16 @@ function rateWay(wayId) {
     updateWays();
   });
 
+  for (var i = 0; i < layers.length; i++) {
+    try {
+      layers[i].closePopup();
+    }
+    catch (e) {}
+  }
 }
 
+var layers = [];
 function createLines(dataArr) {
-
   dataArr.map(way => {
     var nodes = way.nodes;
 
@@ -159,10 +165,9 @@ function createLines(dataArr) {
       "</div>" +
       "</div>";
 
-    polyline.bindPopup(popUpHead, {
+    layers.push(polyline.bindPopup(popUpHead, {
       showOnMouseOver: true
-    });
-    // mymap.fitBounds(polyline.getBounds());
+    }));
   });
 
 }

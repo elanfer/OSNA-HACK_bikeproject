@@ -93,7 +93,8 @@ display:none;
 }
 
 .popUp-container.rating-button {
-  /* float: right; */
+  border-top: 12px solid black;
+  padding-bottom: 2px;
 }
 
 .popUp-container.rating-button button {
@@ -101,12 +102,21 @@ display:none;
   border: none;
   color: white;
   cursor: pointer;
+  outline: none;
+  margin-left: auto;
+  font-size: inherit;
+}
+
+.popUp-container.rating-button button:active {
+  border: none;
+  outline: none;
 }
 
 .popUp-container.rating-button button img {
   margin: 0px;
   width: 40px;
   height: 40px;
+  vertical-align: middle;
 }
 
 .popUp-container-wrapper{
