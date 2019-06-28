@@ -84,7 +84,7 @@ def street_conditon(tag):
 def noise(tag):
     if "noise" in tag:
         value = tag["noise"] #TODO set key name
-        return 1 - (value - 1)/(5-1)
+        return 1 - (float(value) - 1)/(5-1)
 
 
 def speed(tag):
@@ -168,12 +168,28 @@ def main():
     with open('waysExport_new.json') as f:
         data = json.load(f)
 
+
+    # Lautstaerke bekommen
+    filename = 'laerm/laermkartierung.csv'
+    lines = [line.rstrip('\n') for line in open(filename)]
+    laerm = {}
+    for l in lines:
+        y = l.split(", ")
+        laerm[y[0]] = y[1]
+
+    # durch alle Way gehen
     for w in data:
         items = {}
         id = w["id"]
         tags = w["tags"]
 
         if tags != None:
+
+            # Lautstaerke hinzufügen
+            if "name" in tags:
+                if tags["name"] in laerm.keys():
+                    tags["noise"] = laerm[tags["name"]]
+
             street_data, not_bike_way_data = street_conditon(tags)
             speed_data = speed(tags)
             workground_data = workground(tags)
