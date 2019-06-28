@@ -1,19 +1,16 @@
 package de.osnahack.bikeflow.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.osnahack.bikeflow.dto.Node;
 import de.osnahack.bikeflow.dto.Way;
-import de.osnahack.bikeflow.jpa.entities.NodeEntity;
 import de.osnahack.bikeflow.jpa.entities.WayEntity;
 import de.osnahack.bikeflow.jpa.repositories.NodeRepository;
 import de.osnahack.bikeflow.jpa.repositories.WaysRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 public class WayController {
@@ -36,6 +33,7 @@ public class WayController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping("/ways")
     @GetMapping
     public List<Way> ways(@RequestParam Float left, @RequestParam Float bottom,  @RequestParam Float right, @RequestParam Float top) {
@@ -47,12 +45,21 @@ public class WayController {
             way.setType("way");
             way.setState(wayEntity.getState());
             results.add(way);
-            List<NodeEntity> nodesForWay = nodeRepository.findByIdsAndOrderByLatLon(wayEntity.getMembers().keySet().stream().map(Long::valueOf)
-                    .collect(Collectors.toList()));
-            for (NodeEntity nodeEntity : nodesForWay) {
-                Node n = new Node(Float.valueOf(nodeEntity.getAttributes().get("lat")), Float.valueOf(nodeEntity.getAttributes().get("lon")));
-                nodes.add(n);
+            List<String> nodesForWay = nodeRepository.findByIdsAndOrderByLatLon(wayEntity.getId());
+            ObjectMapper objectMapper = new ObjectMapper();
+            for (String s : nodesForWay) {
+                try {
+                    Map<String, ArrayList> map = objectMapper.readValue(s, Map.class);
+                    ArrayList<ArrayList<Double>> coordinates = map.get("coordinates");
+                    for (ArrayList<Double> coordinate : coordinates) {
+                        nodes.add(new Node(coordinate.get(1), coordinate.get(0)));
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+            way.setNodes(nodes);
         }
         return results;
     }
