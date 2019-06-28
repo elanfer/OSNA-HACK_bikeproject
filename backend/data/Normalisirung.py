@@ -100,8 +100,8 @@ def speed(tag):
         return 1 - (int_value - 5)/(70-5)
 
 def construction(tag):
-    if "construction" in tag:
-        value = tag["construction"]
+    if "BEEINTRAEC" in tag:
+        value = tag["BEEINTRAEC"]
         if value == "Vollsperrung":
             return 0.1
         elif value == "Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage" or value == "Einsatz Lichtsignalanlage" or value == "Einsatz Lichtanlage, Spurverlegung":
@@ -128,10 +128,12 @@ def count(dic):
     n1 = 0
     n2 = 0
     n3 = 0
+    n4 = 0
 
     street = 0
     speed = 0
     noise = 0
+    construction = 0
     for d in dic.values():
         i = i + 1
         n = 0
@@ -144,6 +146,9 @@ def count(dic):
         if not d["noise"] == None:
             n = n + 1
             noise = noise + 1
+        if not d["construction"] == None:
+            n = n + 1
+            construction = construction + 1
 
         if n == 0:
             n0 = n0 + 1
@@ -153,6 +158,8 @@ def count(dic):
             n2 = n2 + 1
         if n == 3:
             n3 = n3 + 1
+        if n == 4:
+            n4 = n4 + 1
 
     print("Anzahl: " , i)
     print("#################")
@@ -164,6 +171,7 @@ def count(dic):
     print("1 Daten: " , n1)
     print("2 Daten: " , n2)
     print("3 Daten: " , n3)
+    print("4 Daten: " , n4)
 
 
 
