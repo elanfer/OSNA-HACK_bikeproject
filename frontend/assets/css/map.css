@@ -99,3 +99,9 @@ display:none;
   background: black;
   padding: 1rem;
 }
+
+.popUp-container-icon{
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}

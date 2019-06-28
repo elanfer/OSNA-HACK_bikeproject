@@ -55,23 +55,9 @@ this.mymap.locate({
 
 $(document).ready(function () {
 
-  $.get("http://10.229.54.121:8080/ways?maxLat=52.277676&minlat=52.279927&maxLng=8.033865&minLng=8.078091", function () {
-    console.log('succes')
-  });
 
   function calcIndex(way) {
-    var street = way.customTags["street"] * 3;
-    var noise = 0;
-    if (way.customTags["noise"] !== undefined) {
-      noise = way.customTags["noise"];
-    }
-    var speed = 0;
-    if (way.customTags["speed_car"] !== undefined) {
-      speed = way.customTags["speed_car"] * 5;
-    }
-    var index = street + noise + speed;
-    index = index / 10;
-    return index
+    return way.customTags["norm_default_calc"]
   }
 
   function getColorForState(val) {
@@ -84,8 +70,28 @@ $(document).ready(function () {
     } else if (val >= 0.6) {
       newStateColor = stateColor = "#57C571"
     }
-    
+
     return newStateColor
+  }
+
+  function augmentPopup(metric, imagePrefix) {
+    imagePrefix = "assets/images/" + imagePrefix
+    if (metric != null) {
+      var value = metric;
+      var iconUrl = "";
+      if (value < 0.33) {
+        iconUrl = imagePrefix+"Rot.svg"
+      } else if (value > 0.66) {
+        iconUrl = imagePrefix+"Orange.svg"
+      } else {
+        iconUrl = imagePrefix+"Gruen.svg"
+      }
+
+     return  "<div id='popUp-container'>" +
+        "<img class='popUp-container-icon' title='" + value + "' src='" + iconUrl + "'></img>" +
+        "</div>";
+    }
+    return "";
   }
 
   function createLines(dataArr) {
@@ -115,50 +121,47 @@ $(document).ready(function () {
       var newStateColor = getColorForState(calcIndex(way, indexNum));
       polyLines[0].style.stroke = newStateColor;
 
-      polyline.bindPopup(
-        "<div id='popUp-header'>Urgent</div>" +
+      var popUpHead = "<div id='popUp-header'>Urgent</div>" +
         "<div id='popUp-wrapper' style='background:" + newStateColor + "'>" +
         "<div id='popUp-container-wrapper'>" +
         "<div id='popUp-container'>" +
         "<img src=''></img>" +
-        "<div>Straßenname: " + normalizedTags.name + "</div>" +
-        "</div>" +
-        "<div id='popUp-container'>" +
-        "<img src=''></img>" +
-        "<div>" + normalizedTags.cicleway + "</div>" +
-        "</div>" +
-        "<div id='popUp-container'>" +
-        "<img src=''></img>" +
-        "<div>" + normalizedTags.bridge + "</div>" +
-        "</div>" +
-        "<div id='popUp-container'>" +
-        "<img src=''></img>" +
-        "<div>" + normalizedTags.bridge + "</div>" +
-        "</div>" +
-        "<div id='popUp-container'>" +
-        "<img src=''></img>" +
-        "<div>" + normalizedTags.bridge + "</div>" +
-        "</div>" +
-        "<div id='popUp-container'>" +
-        "<img src=''></img>" +
-        "<div>" + normalizedTags.bridge + "</div>" +
-        "</div>" +
-        "</div>" +
-        "</div>"
-        + "</div>"
+        "<div>Straßenname: " + way.osmTags.name + "</div>" +
+        "</div>";
 
-        , {
-          showOnMouseOver: true
-        });
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_street, "Verkehr")
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_speed_car, "Speed")
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_construction, "Construction")
+      popUpHead = popUpHead + augmentPopup(way.customTags.norm_noise, "Volume")
+
+      if(way.customTags.userFeedback === 0){
+        popUpHead = popUpHead + "<div id='popUp-container'>" +
+        "<img src='LogoUrbanBikingWeiß.svg'></img>" +
+        "</div>";
+      }
+
+      popUpHead = popUpHead + "</div>" +
+        "</div>" +
+        "</div>";
+
+
+      polyline.bindPopup(popUpHead, {
+        showOnMouseOver: true
+      });
       // mymap.fitBounds(polyline.getBounds());
     });
   }
 
-  mymap.on('moveend', function () {
+  function updateWays(){
     $.getJSON("http://10.229.54.121:8080/ways?top=" + mymap.getBounds().getNorth() + "&left=" + mymap.getBounds().getWest() + "&bottom=" + mymap.getBounds().getSouth() + "&right=" + mymap.getBounds().getEast(), function (response) {
       createLines(response);
     });
+  }
+
+  mymap.on('moveend', function () {
+    updateWays();
   });
+  updateWays();
 });
 
 /*fetch('./data.json')
