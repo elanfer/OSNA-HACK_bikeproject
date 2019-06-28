@@ -1,10 +1,10 @@
 
-.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{
+.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar, .leaflet-zoomin, .leafletzoomout{
   border:none !important;
 margin-left: 92vw;
 margin-top: 80vh !important;
 float: right !important;
-
+font-size: 18px !important;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip{
@@ -21,13 +21,11 @@ float: right !important;
   height: 4vh !important;
 }
 
-.leaflet-control-zoom-in a, .leaflet-control-zoom-out a, .leaflet-container a{
+ .leaflet-container a, .leaflat-bar a{
 color: white !important;
-display: flex !important;
-align-items: center !important;
-text-align: center !important;
-margin-left: auto !important;
-margin-right: auto !important;
+
+line-height: 4vh !important;
+
 }
 
 
@@ -54,6 +52,8 @@ left: 50%;
 
 #filterButton {
   position: absolute;
+  font-size: 1.7vh;
+
 }
 
 .buttonWrapper {
@@ -65,4 +65,51 @@ left: 50%;
 
 i {
   color: white;
+  text-align: center !important;
+
+}
+
+.searchbar {
+  background-color: black;
+  height: 5vh;
+  width: 15vw;
+  position: relative;
+  top: 8vh;
+  left: 5vw;
+  z-index: 200000;
+  border-radius: 10px;
+}
+
+.searchBarObject {
+  margin: auto;
+  width: 90%;
+  height: 50%;
+  background-color: black;
+  line-height: 7vh;
+
+}
+
+input {
+  color: white;
+  font-size: 1.5vh;
+  background-color: black;
+  margin: auto;
+  width: 80%;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    display: inline-block;
+}
+
+.searchBarObject button {
+  background-color: transparent;
+  border:none;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(0%, -50%);
+float: right;
 }

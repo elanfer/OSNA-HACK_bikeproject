@@ -10,13 +10,14 @@ var customMarker = L.icon({
 
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA', {
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-  maxZoom: 100,
+  maxZoom: 50,
   id: 'mapbox.light-v9',
   accessToken: 'pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA'
 }).addTo(mymap);
 
 this.mymap.locate({
-  setView: true
+  setView: true,
+  maxZoom: 140
 }).on("locationfound", e => {
 
 L.marker([e.latitude, e.longitude], {icon: customMarker}).addTo(this.mymap);

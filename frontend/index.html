@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin=""/>
@@ -21,6 +22,12 @@
   <div id="mapid">
     <div class="buttonWrapper">
       <button onclick="" id="filterButton" class="leaflet-control-zoom-in"><i class="fas fa-cog"></i></button>
+      </div>
+      <div class="searchbar">
+        <form class="searchBarObject" action="/action_page.php" style="margin:auto;max-width:300px">
+        <input type="text" placeholder="Search.." name="search2">
+        <button type="submit"><i class="fa fa-search"></i></button>
+       </form>
       </div>
     </div>
   </div>
@@ -37,7 +44,10 @@
   crossorigin=""></script>
 
   <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+ <script src="https://kit.fontawesome.com/80602a5d73.js"></script>
   <script src="javascript/map.js"></script>
   <script src="javascript/ui.js"></script>
+
 </body>
 </html>
