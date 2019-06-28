@@ -58,3 +58,5 @@ cur = conn.cursor()
 cur.execute('SELECT osm_id, the_geom, st_distance(the_geom, ST_GeomFromText(\'LINESTRING(%s)\',4326))'
                 + 'as dist FROM osm_ways WHERE the_geom && ST_MakeEnvelope(8.04743552735, '
                 + '52.27966334101, 8.04743552735, 52.30450325369) order by dist asc;')
+
+# TODO: compare len of geom hashes (only hold equal lenghts) and try string comparison
