@@ -103,23 +103,32 @@ def construction(tag):
     if "construction" in tag:
         value = tag["construction"]
         if value == "Vollsperrung":
-            return 0.1
-        elif value == "Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage" or value == "Einsatz Lichtsignalanlage" or value == "Einsatz Lichtanlage, Spurverlegung":
             return 0.2
+        elif value == "Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage" or value == "Einsatz Lichtsignalanlage" or value == "Einsatz Lichtanlage, Spurverlegung":
+            return 0.4
         elif value == "Verengung 2 auf 1":
-            return 0.3
+            return 0.6
 
 
-def gewichtet(weg, geschwin, lautst, baust=0):
+def gewichtet(weg, geschwin, lautst, baust, not_bike_flag):
+    numerator = 11
     if not weg:
         weg = 0
+        numerator = numerator - 3
     if not geschwin:
         geschwin = 0
+        numerator = numerator - 5
     if not lautst:
         lautst = 0
+        numerator = numerator - 2
     if not baust:
         baust = 0
-    return (3*weg + 5*geschwin + 2*lautst + 1*baust)/8 # 11
+        numerator = numerator - 1
+    if not_bike_flag is False:
+        return 0
+    if numerator == 0:
+        numerator = 1
+    return (3*weg + 5*geschwin + 2*lautst + 1*baust)/numerator 
 
 
 def count(dic):
@@ -177,6 +186,7 @@ def count(dic):
 
 
 def main():
+    j = 0
     i = 0
     dic = {}
 
@@ -209,17 +219,21 @@ def main():
             speed_data = speed(tags)
             construction_data = construction(tags)
             noise_data = noise(tags)
+            
+            if not_bike_way_data is False:
+                j+=1            
             if speed_data !=  None or street_data != None or construction_data != None or noise_data != None:
                 items["street"] = street_data
                 items["speed_car"] = speed_data
                 items["construction"] = construction_data
                 items["noise"] = noise_data
-                items["default_calc"] = gewichtet(street_data, speed_data, noise_data)
+                items["default_calc"] = gewichtet(street_data, speed_data, noise_data, construction_data, not_bike_way_data)
 
                 dic[id] =items
 
 
     count(dic)
+    print('Not bike ways: ', str(j))
     #print(json.dumps(dic))
 
     try:
@@ -229,15 +243,15 @@ def main():
     cur = conn.cursor()
     for key, value in dic.items():
         if value['street'] is not None:
-            cur.execute('INSERT INTO public.custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'street\', %s);', (key, value['street']))
+            cur.execute('INSERT INTO public.custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'norm_street\', %s);', (key, value['street']))
         if value['speed_car'] is not None:
-            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'speed_car\', %s);', (key, value['street']))
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'norm_speed_car\', %s);', (key, value['speed_car']))
         if value['construction'] is not None:
-            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'construction\', %s);', (key, value['construction']))
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'norm_construction\', %s);', (key, value['construction']))
         if value['noise'] is not None:
-            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'noise\', %s);', (key, value['noise']))
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'norm_noise\', %s);', (key, value['noise']))
         if value['default_calc'] is not None:
-            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'default_calc\', %s);', (key, value['default_calc']))
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'norm_default_calc\', %s);', (key, value['default_calc']))
     conn.commit()
     conn.close
     #TODO daten in die Datenbank
