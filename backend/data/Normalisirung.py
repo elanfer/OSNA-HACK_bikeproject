@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import psycopg2
 
 
 def street_conditon(tag):
@@ -132,7 +133,7 @@ def count(dic):
         if not d["street"] == None:
             street = street + 1
             n = n + 1
-        if not d["speed"] == None:
+        if not d["speed_car"] == None:
             n = n + 1
             speed = speed + 1
         if not d["noise"] == None:
@@ -207,6 +208,24 @@ def main():
     count(dic)
     #print(json.dumps(dic))
 
+    try:
+        conn = psycopg2.connect("dbname='postgres' user='postgres' host='10.229.54.121' port='15432' password='mysecretpassword'")
+    except:
+        print('I am unable to connect to the database')
+    cur = conn.cursor()
+    for key, value in dic.items():
+        if value['street'] is not None:
+            cur.execute('INSERT INTO public.custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'street\', %s);', (key, value['street']))
+        if value['speed_car'] is not None:
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'speed_car\', %s);', (key, value['street']))
+        if value['construction'] is not None:
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'construction\', %s);', (key, value['construction']))
+        if value['noise'] is not None:
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'noise\', %s);', (key, value['noise']))
+        if value['default_calc'] is not None:
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'street\', %s);', (key, value['default_calc']))
+    conn.commit()
+    conn.close
     #TODO daten in die Datenbank
 
 if __name__ == '__main__':

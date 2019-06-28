@@ -1,6 +1,6 @@
 import psycopg2
 import xml.etree.ElementTree as ET
-root = ET.parse('backend/data/converted/Radschnellrouten.osm').getroot()
+root = ET.parse('backend/data/converted/Velorouten.osm').getroot()
 coords = root.findall('node')
 nodemap = {}
 for elem in coords:
@@ -45,7 +45,7 @@ for way in root.findall('way'):
     min_long = min_long - 00.00000000500
 
     try:
-        conn = psycopg2.connect("dbname='bike_db' user='bike_user' host='127.0.0.1' password='bikemap'")
+        conn = psycopg2.connect("dbname='postgres' user='postgres' host='10.229.54.121' port='15432' password='mysecretpassword'")
     except:
         print('I am unable to connect to the database')
 
