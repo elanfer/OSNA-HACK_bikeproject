@@ -9,6 +9,8 @@ public class Way {
 
     private Map<String, String> normalizedTags;
 
+    private Float state;
+
     public Way(List<Node> nodes, Map<String, String> normalizedTags) {
         this.nodes = nodes;
         this.normalizedTags = normalizedTags;
@@ -36,5 +38,13 @@ public class Way {
 
     public void setNormalizedTags(Map<String, String> normalizedTags) {
         this.normalizedTags = normalizedTags;
+    }
+
+    public Float getState() {
+        return state;
+    }
+
+    public void setState(Float state) {
+        this.state = state;
     }
 }
