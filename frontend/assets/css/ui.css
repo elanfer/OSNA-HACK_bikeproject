@@ -51,13 +51,9 @@ line-height: 4vh !important;
 }
 
 #filterButton {
-<<<<<<< HEAD
   position: absolute;
   font-size: 1.7vh;
-
-=======
   cursor: pointer;
->>>>>>> d369405a0d71ab893b1eea0b8c2a11fbedadd145
 }
 
 .buttonWrapper {
@@ -126,7 +122,7 @@ float: right;
   font-family: Roboto;
   font-size: 2rem;
   margin-top: 2rem;
-  
+
 }
 
 .controlls_settings{
@@ -173,4 +169,3 @@ float: right;
   border: none;
   cursor: pointer;
 }
-
