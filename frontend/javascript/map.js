@@ -124,12 +124,12 @@ $(document).ready(function () {
       var newStateColor = getColorForState(calcIndex(way, indexNum));
       polyLines[0].style.stroke = newStateColor;
 
-      var popUpHead = "<div id='popUp-header'>Urgent</div>" +
+      var popUpHead = "<div id='popUp-header'></div>" +
         "<div id='popUp-wrapper' style='background:" + newStateColor + "'>" +
         "<div id='popUp-container-wrapper'>" +
         "<div id='popUp-container'>" +
         "<img src=''></img>" +
-        "<div>Straßenname: " + way.osmTags.name + "</div>" +
+        "<div class='street-name'>" + way.osmTags.name + "</div>" +
         "</div>";
 
       popUpHead = popUpHead + augmentPopup(way.customTags.norm_street, "Boden", ["schlechter", "mäßiger", "guter"], "Bodenbelag");
@@ -146,7 +146,6 @@ $(document).ready(function () {
       popUpHead = popUpHead + "</div>" +
         "</div>" +
         "</div>";
-
 
       polyline.bindPopup(popUpHead, {
         showOnMouseOver: true

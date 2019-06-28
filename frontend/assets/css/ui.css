@@ -167,3 +167,8 @@ float: right;
   border: none;
   cursor: pointer;
 }
+
+.street-name{
+  font-family: Roboto, Arial;
+  font-size: 1.5rem;
+}
