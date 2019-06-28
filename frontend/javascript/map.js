@@ -1,11 +1,26 @@
 var mymap = L.map('mapid').setView([52.281554, 8.042814], 13);
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox.streets',
+// custom marker iconUrl
+var customMarker = L.icon({
+    iconUrl: 'assets/images/positionSvgator (5).svg',
+
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+});
+
+L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+  maxZoom: 100,
+  id: 'larathle.Light-copy',
   accessToken: 'pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA'
 }).addTo(mymap);
+
+this.mymap.locate({
+  setView: true
+}).on("locationfound", e => {
+
+L.marker([e.latitude, e.longitude], {icon: customMarker}).addTo(this.mymap);
+});
 
 $( document ).ready(function(){
 
@@ -14,18 +29,18 @@ $( document ).ready(function(){
   });
 
   function createLines(dataArr) {
-    
+
     dataArr.map(way => {
       var nodes = way.nodes
       var normalizedTags = way.normalizedTags
       var stateColor = ""
-  
+
       var objOfNodes = nodes.map(function(obj) {
-        return Object.keys(obj).sort().reverse().map(function(key) { 
+        return Object.keys(obj).sort().reverse().map(function(key) {
           return obj[key];
         });
       });
-      
+
       var arrOfNodes = objOfNodes.map(function(el){
         var arr=[];
         for(var key in el){
@@ -38,7 +53,7 @@ $( document ).ready(function(){
 
       var index = 0.8
       function setPopUpColor(val){
-      
+
         var newStateColor
         if (val <= 0.3){
           newStateColor = stateColor = "#DF4848"
@@ -49,10 +64,10 @@ $( document ).ready(function(){
           newStateColor = stateColor = "#57C571"
         }
         return newStateColor
-        
-      }  
-      
-     
+
+      }
+
+
 
       var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline', id: 'my_polyline' }).addTo(mymap);
       polyline.bindPopup(
@@ -61,26 +76,26 @@ $( document ).ready(function(){
             "<p>"+ normalizedTags.robots +"</p>"+"<p>"+ normalizedTags.love +"</p>"+"<p>"+ normalizedTags.state +"</p>"
           +"</div>"
         +"</div>"
-        
+
         , {
         showOnMouseOver: true
       });
 
 
-      
-      
-     
+
+
+
 
     });
   }
-  
+
   $.getJSON("data.json", function(json) {
     createLines(json)
   });
 
 
 
- 
+
 });
 
 
