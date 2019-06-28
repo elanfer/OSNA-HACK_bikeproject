@@ -1,8 +1,8 @@
 
 .leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar, .leaflet-zoomin, .leafletzoomout{
   border:none !important;
-margin-left: 92vw;
-margin-top: 80vh !important;
+right: 30px !important;
+bottom: 30px !important;
 float: right !important;
 font-size: 18px !important;
 }
@@ -17,14 +17,14 @@ font-size: 18px !important;
   border:none !important;
   border-radius: 50% !important;
   margin: 10% !important;
-  width: 4vh !important;
-  height: 4vh !important;
+  width: 40px !important;
+  height: 40px !important;
 }
 
  .leaflet-container a, .leaflat-bar a{
 color: white !important;
-
-line-height: 4vh !important;
+font-size: 20px !important;
+line-height: 40px!important;
 
 }
 
@@ -43,11 +43,11 @@ line-height: 4vh !important;
 }
 
 #filterButtonContainer {
-  top: 50%;
-  left: 50%;
-  position: relative;
+  top: 20px;
+  left: 20px;
+  position: absolute;
   z-index: 20000000 !important;
-  margin-bottom: 50vh;
+  margin-bottom: 30px;
 }
 
 #filterButton {
@@ -58,8 +58,8 @@ line-height: 4vh !important;
 
 .buttonWrapper {
   position: absolute;
-  top: 70vh;
-  right: 6.3vw;
+  bottom: 200px;
+  right:200px;
   z-index: 2000000000;
   cursor: pointer;
 }
@@ -72,11 +72,11 @@ i {
 
 .searchbar {
   background-color: black;
-  height: 5vh;
-  width: 15vw;
+  height: 50px;
+  width:220px;
   position: relative;
-  top: 8vh;
-  left: 5vw;
+  top: 25px;
+  left: 90px;
   z-index: 200000;
   border-radius: 10px;
 }
@@ -113,6 +113,32 @@ input {
   left: 80%;
   transform: translate(0%, -50%);
 float: right;
+}
+
+.logo {
+  background-color: black;
+  top: 75px;
+  left: 30px;
+  position: relative;
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 30000000;
+}
+
+.logoObjekt {
+  width: 40px;
+
+
+}
+
+.logoObjekt img {
+    width:35px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+      display: inline-block;
 }
 
 .controlls_header{
