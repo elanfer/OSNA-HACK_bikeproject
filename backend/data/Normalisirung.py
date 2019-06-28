@@ -99,10 +99,15 @@ def speed(tag):
             int_value = 70
         return 1 - (int_value - 5)/(70-5)
 
-def workground(tag):
-    if "workground" in tag:
-        value = tag["workground"]
-        return 1 - value
+def construction(tag):
+    if "construction" in tag:
+        value = tag["construction"]
+        if value == "Vollsperrung":
+            return 0.1
+        elif value == "Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage" or value == "Einsatz Lichtsignalanlage" or value == "Einsatz Lichtanlage, Spurverlegung":
+            return 0.2
+        elif value == "Verengung 2 auf 1":
+            return 0.3
 
 
 def gewichtet(weg, geschwin, lautst, baust=0):
@@ -193,12 +198,12 @@ def main():
 
             street_data, not_bike_way_data = street_conditon(tags)
             speed_data = speed(tags)
-            workground_data = workground(tags)
+            construction_data = construction(tags)
             noise_data = noise(tags)
             if speed_data !=  None or street_data != None or workground_data != None or noise_data != None:
                 items["street"] = street_data
                 items["speed_car"] = speed_data
-                items["construction"] = workground_data
+                items["construction"] = construction_data
                 items["noise"] = noise_data
                 items["default_calc"] = gewichtet(street_data, speed_data, noise_data)
 
