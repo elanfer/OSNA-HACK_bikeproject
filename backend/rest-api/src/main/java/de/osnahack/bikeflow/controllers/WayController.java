@@ -3,7 +3,9 @@ package de.osnahack.bikeflow.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.osnahack.bikeflow.dto.Node;
 import de.osnahack.bikeflow.dto.Way;
+import de.osnahack.bikeflow.jpa.entities.CustomTag;
 import de.osnahack.bikeflow.jpa.entities.WayEntity;
+import de.osnahack.bikeflow.jpa.repositories.CustomTagRepository;
 import de.osnahack.bikeflow.jpa.repositories.NodeRepository;
 import de.osnahack.bikeflow.jpa.repositories.WaysRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class WayController {
     private WaysRepository waysRepository;
     @Autowired
     private NodeRepository nodeRepository;
+    @Autowired
+    private CustomTagRepository customTagRepository;
 
     @RequestMapping(value="/updateState",method = RequestMethod.POST)
     public void updateState(@RequestBody List<Map<String,String>> body){
@@ -45,11 +49,11 @@ public class WayController {
             way.setType("way");
             way.setState(wayEntity.getState());
             results.add(way);
-            List<String> nodesForWay = nodeRepository.findByIdsAndOrderByLatLon(wayEntity.getId());
+            List<String> geoJsonsOfWays = nodeRepository.findByIdsAndOrderByLatLon(wayEntity.getId());
             ObjectMapper objectMapper = new ObjectMapper();
-            for (String s : nodesForWay) {
+            for (String geoJson : geoJsonsOfWays) {
                 try {
-                    Map<String, ArrayList> map = objectMapper.readValue(s, Map.class);
+                    Map<String, ArrayList> map = objectMapper.readValue(geoJson, Map.class);
                     ArrayList<ArrayList<Double>> coordinates = map.get("coordinates");
                     for (ArrayList<Double> coordinate : coordinates) {
                         nodes.add(new Node(coordinate.get(1), coordinate.get(0)));
@@ -60,6 +64,12 @@ public class WayController {
                 }
             }
             way.setNodes(nodes);
+            List<CustomTag> customTags = customTagRepository.findByWayId(wayEntity.getId());
+            Map<String, String> customTagMap = new HashMap<>();
+            for (CustomTag customTag : customTags) {
+                customTagMap.put(customTag.getTagName(), customTag.getTagValue());
+            }
+            way.setCustomTags(customTagMap);
         }
         return results;
     }

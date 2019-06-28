@@ -8,6 +8,7 @@ public class Way {
     private List<Node> nodes;
 
     private Map<String, String> normalizedTags;
+    private Map<String, String> customTags;
 
     private Float state;
 
@@ -46,5 +47,13 @@ public class Way {
 
     public void setState(Float state) {
         this.state = state;
+    }
+
+    public Map<String, String> getCustomTags() {
+        return customTags;
+    }
+
+    public void setCustomTags(Map<String, String> customTags) {
+        this.customTags = customTags;
     }
 }
