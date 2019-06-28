@@ -8,6 +8,22 @@ var customMarker = L.icon({
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
 });
 
+
+function disableLine(color){
+  
+  var paths = document.getElementsByTagName('path')
+  var arr = [].slice.call(paths);
+  
+  arr.map(path => {
+    console.log(path.style.stroke)
+    
+    if(path.style.stroke == color){
+      console.log(path.style)
+      path.style.display = "none"
+    }
+  })
+}
+
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA', {
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
   maxZoom: 100,
@@ -78,7 +94,7 @@ $( document ).ready(function(){
         }
         console.log(polyLine[0].style.stroke = newStateColor)
         return newStateColor
-        
+
 
       }
 
@@ -103,7 +119,7 @@ $( document ).ready(function(){
       ,{
         showOnMouseOver: true
       });
-      mymap.fitBounds(polyline.getBounds());
+     // mymap.fitBounds(polyline.getBounds());
     });
   }
 
@@ -111,6 +127,8 @@ $( document ).ready(function(){
     createLines(json)
   });
 });
+
+
 
 /*fetch('./data.json')
   .then(function(resp) {
