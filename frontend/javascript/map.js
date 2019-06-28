@@ -11,7 +11,7 @@ var customMarker = L.icon({
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA', {
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
   maxZoom: 100,
-  id: 'larathle.Light-copy',
+  id: 'mapbox.light-v9',
   accessToken: 'pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA'
 }).addTo(mymap);
 
@@ -21,6 +21,8 @@ this.mymap.locate({
 
 L.marker([e.latitude, e.longitude], {icon: customMarker}).addTo(this.mymap);
 });
+
+
 
 $( document ).ready(function(){
 
@@ -36,11 +38,7 @@ $( document ).ready(function(){
       var stateColor = ""
 
       var objOfNodes = nodes.map(function(obj) {
-<<<<<<< HEAD
-        return Object.keys(obj).sort().reverse().map(function(key) {
-=======
-        return Object.keys(obj).sort().map(function(key) { 
->>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
+        return Object.keys(obj).sort().map(function(key) {
           return obj[key];
         });
       });
@@ -55,10 +53,6 @@ $( document ).ready(function(){
 
       var index = 0.8
       function setPopUpColor(val){
-<<<<<<< HEAD
-
-=======
->>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
         var newStateColor
         if (val <= 0.3){
           newStateColor = stateColor = "#DF4848"
@@ -69,56 +63,29 @@ $( document ).ready(function(){
           newStateColor = stateColor = "#57C571"
         }
         return newStateColor
-<<<<<<< HEAD
 
       }
 
 
 
       var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline', id: 'my_polyline' }).addTo(mymap);
-=======
-      }  
-      
-      console.log(arrOfNodes)
-      var polyline = L.polyline(arrOfNodes,  { id: 'my_polyline'}).addTo(mymap);
->>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
       polyline.bindPopup(
         "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
           "<div id='popUp' class=''>"+
             //"<p>"+ normalizedTags.smoothness +"</p>"+"<p>"+ normalizedTags.surface +"</p>"+"<p>"+ normalizedTags.name +"</p>"+"<p>"+ normalizedTags.source +"</p>"+"<p>"+ normalizedTags.maxspeed +"</p>"+"<p>"+ normalizedTags.highway +"</p>"+"<p>"+ normalizedTags.lit +"</p>"
           +"</div>"
         +"</div>"
-<<<<<<< HEAD
 
-        , {
-        showOnMouseOver: true
-      });
-
-
-
-
-
-
-=======
-        
       ,{
         showOnMouseOver: true
       });
       mymap.fitBounds(polyline.getBounds());
->>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
     });
   }
 
   $.getJSON("data.json", function(json) {
     createLines(json)
   });
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 9823360314ea9a88afb18fc21ea846b88a36e617
 });
 
 /*fetch('./data.json')

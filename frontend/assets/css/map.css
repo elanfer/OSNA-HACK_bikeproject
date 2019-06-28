@@ -1,12 +1,12 @@
-#mapid { 
-  height:100vh; 
+#mapid {
+  height:100vh;
 }
 
 .my_polyline{
   stroke: green;
   fill: none;
-  stroke-dasharray: 10,10; 
-  stroke-width: 5; 
+  stroke-dasharray: 10,10;
+  stroke-width: 5;
 }
 
 .leaflet-popup-content-wrapper{
@@ -20,17 +20,13 @@
   overflow: unset;
 }
 
-.leaflet-top, .leaflet-popup-close-button {
-  display: none;
+
+ .leaflet-popup-close-button {
+display:none;
 }
 
 .leaflet-popup-content{
   margin: 0;
-}
-
-.leaflet-popup-content-wrapper, .leaflet-popup-tip{
-  background: transparent;
-  box-shadow: unset;
 }
 
 #popUp{
