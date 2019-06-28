@@ -63,14 +63,13 @@ function getColorForState(val) {
   if (val <= 0.3) {
     newStateColor = "#DF4848"
   } else if (val > 0.3 && val <= 0.6) {
-    newStateColor =  "#FF9C07"
+    newStateColor = "#FF9C07"
   } else if (val >= 0.6) {
     newStateColor = "#57C571"
   }
 
   return newStateColor
 }
-
 
 function augmentPopup(metric, imagePrefix, ratingPrefixTexts, metricTypeText) {
   imagePrefix = "assets/images/" + imagePrefix;
@@ -79,22 +78,36 @@ function augmentPopup(metric, imagePrefix, ratingPrefixTexts, metricTypeText) {
     var iconUrl;
     var ratingPrefixText;
     if (value < 0.33) {
-      iconUrl = imagePrefix+"Rot.svg";
+      iconUrl = imagePrefix + "Rot.svg";
       ratingPrefixText = ratingPrefixTexts[0];
     } else if (value > 0.66) {
-      iconUrl = imagePrefix+"Gruen.svg";
+      iconUrl = imagePrefix + "Gruen.svg";
       ratingPrefixText = ratingPrefixTexts[2];
     } else {
-      iconUrl = imagePrefix+"Orange.svg";
+      iconUrl = imagePrefix + "Orange.svg";
       ratingPrefixText = ratingPrefixTexts[1];
     }
 
-   return  "<div id='popUp-container'>" +
+    return "<div id='popUp-container'>" +
       "<img class='popUp-container-icon' title='" + value + "' src='" + iconUrl + "'></img>" +
       "<div>" + ratingPrefixText + " " + metricTypeText + "</div>" +
       "</div>";
   }
-  return "";
+}
+
+function setRaitingIcons(metric) {
+  var value = metric;
+  if (value < 0.33) {
+    ratingIcon = "assets/images/WertungHellRot.svg"
+
+  } else if (value > 0.66) {
+    ratingIcon = "assets/images/WertungHellGruen.svg"
+
+  } else {
+    ratingIcon = "assets/images/WertungHellOrange.svg"
+
+  }
+  return ratingIcon
 }
 
 function createLines(dataArr) {
@@ -117,15 +130,14 @@ function createLines(dataArr) {
     });
 
     var newStateColor = getColorForState(calcIndex(way));
-    var polyline = L.polyline(arrOfNodes, { color: newStateColor}).addTo(mymap);
-    
+    var polyline = L.polyline(arrOfNodes, { color: newStateColor }).addTo(mymap);
 
     var popUpHead = "<div id='popUp-header'></div>" +
       "<div id='popUp-wrapper' style='background:" + newStateColor + "'>" +
+      "<div class='street-name'>" + way.osmTags.name + " <img id='ratingIcon' src='" + setRaitingIcons(way.customTags.norm_street) + "'></img></div>" +
       "<div id='popUp-container-wrapper'>" +
       "<div id='popUp-container'>" +
       "<img src=''></img>" +
-      "<div class='street-name'>" + way.osmTags.name + "</div>" +
       "</div>";
 
     popUpHead = popUpHead + augmentPopup(way.customTags.norm_street, "Boden", ["schlechter", "mäßiger", "guter"], "Bodenbelag");
@@ -133,10 +145,10 @@ function createLines(dataArr) {
     popUpHead = popUpHead + augmentPopup(way.customTags.norm_construction, "Construction", ["hinderliche", "nicht störende", "keine"], "Baustellen");
     popUpHead = popUpHead + augmentPopup(way.customTags.norm_noise, "Volume", ["viel", "mäßig", "wenig"], "Lärmbelastung");
 
-    if(way.customTags.userFeedback === 0){
+    if (way.customTags.userFeedback === 0) {
       popUpHead = popUpHead + "<div id='popUp-container'>" +
-      "<img src='LogoUrbanBikingWeiß.svg'></img>" +
-      "</div>";
+        "<img src='LogoUrbanBikingWeiß.svg'></img>" +
+        "</div>";
     }
 
     popUpHead = popUpHead + "</div>" +
@@ -148,9 +160,10 @@ function createLines(dataArr) {
     });
     // mymap.fitBounds(polyline.getBounds());
   });
+
 }
 
-function updateWays(){
+function updateWays() {
   $.getJSON("http://10.229.54.121:8080/ways?top=" + mymap.getBounds().getNorth() + "&left=" + mymap.getBounds().getWest() + "&bottom=" + mymap.getBounds().getSouth() + "&right=" + mymap.getBounds().getEast(), function (response) {
     createLines(response);
   });

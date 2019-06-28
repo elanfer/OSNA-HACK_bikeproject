@@ -197,4 +197,5 @@ float: right;
 .street-name{
   font-family: Roboto, Arial;
   font-size: 1.5rem;
+  padding-left: 1rem;
 }

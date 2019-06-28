@@ -66,11 +66,10 @@ display:none;
 
 #popUp-wrapper{
   min-width: 12rem ;
-  padding-top: 2rem;
+  padding-top: 1rem;
   background: #FF9C07;
   border-radius: 10px;
   overflow: hidden;
-  background: black;
 }
 
 #popUp-header{
@@ -104,4 +103,9 @@ display:none;
   width: 30px;
   height: 30px;
   margin-top: 10px;
+}
+
+#ratingIcon{
+  width: 20px;
+  height: 20px;
 }
