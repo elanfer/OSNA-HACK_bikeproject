@@ -59,7 +59,7 @@ line-height: 4vh !important;
 .buttonWrapper {
   position: absolute;
   top: 70vh;
-  right: 2vw;
+  right: 6.3vw;
   z-index: 2000000000;
   cursor: pointer;
 }

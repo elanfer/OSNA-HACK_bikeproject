@@ -25,7 +25,7 @@ path:hover{
 }
 
 
-.leaflet-top, .leaflet-popup-close-button {
+.leaflet-popup-close-button {
 display:none;
 }
 
