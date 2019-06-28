@@ -1,5 +1,6 @@
 var mymap = L.map('mapid').setView([52.281554, 8.042814], 13);
 
+
 // custom marker iconUrl
 var customMarker = L.icon({
     iconUrl: 'assets/images/positionSvgator (5).svg',
@@ -127,9 +128,13 @@ $( document ).ready(function(){
     });
   }
 
-  $.getJSON("data.json", function(json) {
-    createLines(json)
+  mymap.on('moveend', function() { 
+    console.log(mymap.getBounds());
+    $.getJSON("http://10.229.54.121:8080/ways?top=" + mymap.getBounds().getNorth() +"&left="+mymap.getBounds().getWest()+"&bottom="+mymap.getBounds().getSouth()+"&right="+mymap.getBounds().getEast(), function(response){
+      createLines(response);
+    });
   });
+
 });
 
 
