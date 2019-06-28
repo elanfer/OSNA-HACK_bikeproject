@@ -111,24 +111,32 @@ def construction(tag):
 
 
 def gewichtet(weg, geschwin, lautst, baust, not_bike_flag):
-    numerator = 11
-    if not weg:
+    numerator = 14
+    if weg == 0:
+        numerator = numerator+3
+    elif not weg:
         weg = 0
         numerator = numerator - 3
-    if not geschwin:
+    if geschwin == 0:
+        numerator = numerator+5
+    elif not geschwin:
         geschwin = 0
         numerator = numerator - 5
-    if not lautst:
+    if lautst == 0:
+        numerator = numerator+5
+    elif not lautst:
         lautst = 0
-        numerator = numerator - 2
-    if not baust:
+        numerator = numerator - 5
+    if baust == 0:
+        numerator = numerator+1
+    elif not baust:
         baust = 0
         numerator = numerator - 1
     if not_bike_flag is False:
         return 0
     if numerator == 0:
         numerator = 1
-    return (3*weg + 5*geschwin + 2*lautst + 1*baust)/numerator 
+    return (3*weg + 5*geschwin + 5*lautst + 1*baust)/numerator
 
 
 def count(dic):
