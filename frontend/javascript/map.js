@@ -40,7 +40,7 @@ this.mymap.locate({
 });
 
 function calcIndex(way) {
-  if (way.customTags.userFeedback === 0 && getUserFeedbackSettingValue() === true)
+  if (way.customTags.userFeedback == 0 && getUserFeedbackSettingValue() === true)
   {
     return 0;
   }
@@ -64,7 +64,7 @@ function getColorForState(val) {
 
 function augmentPopup(metric, imagePrefix, ratingPrefixTexts, metricTypeText) {
   imagePrefix = "assets/images/" + imagePrefix;
-  if (metric != null) {
+  if (metric !== null && metric !== undefined) {
     var value = metric;
     var iconUrl;
     var ratingPrefixText;
@@ -79,11 +79,12 @@ function augmentPopup(metric, imagePrefix, ratingPrefixTexts, metricTypeText) {
       ratingPrefixText = ratingPrefixTexts[1];
     }
 
-    return "<div id='popUp-container'>" +
+   return "<div class='popUp-container'>" +
       "<img class='popUp-container-icon' title='" + value + "' src='" + iconUrl + "'></img>" +
       "<div>" + ratingPrefixText + " " + metricTypeText + "</div>" +
       "</div>";
   }
+  return "";
 }
 
 function setRaitingIcons(metric) {
@@ -99,6 +100,18 @@ function setRaitingIcons(metric) {
 
   }
   return ratingIcon
+}
+
+function buildRatingButton(wayId) {
+  return "<div class='popUp-container rating-button'><button onclick='rateWay(" + wayId + ")'>Schlechten Weg melden<img src='assets/images/VoteButton.svg' /></button></div>";
+}
+
+/**
+ * Rates a way as bad (only currently possible rating).
+ * @param {int} wayId The way ID.
+ */
+function rateWay(wayId) {
+  $.get("http://10.229.54.121:8080/setUserFeedback?wayId=" + wayId);
 }
 
 function createLines(dataArr) {
@@ -127,7 +140,7 @@ function createLines(dataArr) {
       "<div id='popUp-wrapper' style='background:" + newStateColor + "'>" +
       "<div class='street-name'>" + way.osmTags.name + " <img id='ratingIcon' src='" + setRaitingIcons(way.customTags.norm_street) + "'></img></div>" +
       "<div id='popUp-container-wrapper'>" +
-      "<div id='popUp-container'>" +
+      "<div class='popUp-container'>" +
       "<img src=''></img>" +
       "</div>";
 
@@ -135,12 +148,9 @@ function createLines(dataArr) {
     popUpHead = popUpHead + augmentPopup(way.customTags.norm_speed_car, "Speed", ["schnelle", "mäßig schnelle", "langsame"], "Autos");
     popUpHead = popUpHead + augmentPopup(way.customTags.norm_construction, "Construction", ["hinderliche", "nicht störende", "keine"], "Baustellen");
     popUpHead = popUpHead + augmentPopup(way.customTags.norm_noise, "Volume", ["viel", "mäßig", "wenig"], "Lärmbelastung");
+    popUpHead = popUpHead + augmentPopup(way.customTags.userFeedback, "UserVote", ["unbeliebt", "durchschnittlich", "beliebt"], "");
 
-    if (way.customTags.userFeedback === 0) {
-      popUpHead = popUpHead + "<div id='popUp-container'>" +
-        "<img src='LogoUrbanBikingWeiß.svg'></img>" +
-        "</div>";
-    }
+    popUpHead = popUpHead + buildRatingButton(way.wayId);
 
     popUpHead = popUpHead + "</div>" +
       "</div>" +

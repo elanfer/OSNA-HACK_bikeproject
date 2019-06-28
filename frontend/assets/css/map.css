@@ -82,17 +82,34 @@ display:none;
   left: 1rem;
 }
 
-#popUp-container{
+.popUp-container{
   display: flex;
   background: black;
   align-items: center;
 }
 
-#popUp-container img{
+.popUp-container img{
   margin-right: 1rem;
 }
 
-#popUp-container-wrapper{
+.popUp-container.rating-button {
+  /* float: right; */
+}
+
+.popUp-container.rating-button button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.popUp-container.rating-button button img {
+  margin: 0px;
+  width: 40px;
+  height: 40px;
+}
+
+.popUp-container-wrapper{
   display: flex;
   flex-direction: column;
   background: black;
