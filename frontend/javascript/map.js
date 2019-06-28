@@ -54,10 +54,19 @@ $( document ).ready(function(){
       console.log(arrOfNodes)
       var polyline = L.polyline(arrOfNodes,  { className: 'my_polyline' + indexNum + ''}).addTo(mymap);
       polyline.bindPopup(
-        "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
-          "<div id='popUp' class=''>"+
-            //"<p>"+ normalizedTags.smoothness +"</p>"+"<p>"+ normalizedTags.surface +"</p>"+"<p>"+ normalizedTags.name +"</p>"+"<p>"+ normalizedTags.source +"</p>"+"<p>"+ normalizedTags.maxspeed +"</p>"+"<p>"+ normalizedTags.highway +"</p>"+"<p>"+ normalizedTags.lit +"</p>"
-          +"</div>"
+        "<div id='popUp-header'>Urgent</div>"+
+          "<div id='popUp-wrapper' style='background:" + setPopUpColor(index) + "'>"+
+            "<div id='popUp-container-wrapper'>"+
+              "<div id='popUp-container'>"+ 
+                "<img src=''></img>"+
+                "<div>"+ 'normalizedTags.smoothness' +"</div>"+
+              "</div>"+
+              "<div id='popUp-container'>"+ 
+                "<img src=''></img>"+
+                "<div>"+ 'normalizedTags.smoothness' +"</div>"+
+              "</div>"+
+            "</div>"+
+          "</div>"
         +"</div>"
         
       ,{

@@ -40,12 +40,40 @@ path:hover{
   height: 100%;
   width: 100%;
   background: black;
+  padding: 1rem;
 }
 
 #popUp-wrapper{
-  min-width: 8rem ;
-  padding-top: 15px;
+  min-width: 12rem ;
+  padding-top: 2rem;
   background: #FF9C07;
   border-radius: 10px;
   overflow: hidden;
+  background: black;
+}
+
+#popUp-header{
+  color: white;
+  position: absolute;
+  top: 2px;
+  font-family: Roboto, Arial;
+  font-size: 20px;
+  font-weight: bold;
+  left: 1rem;
+}
+
+#popUp-container{
+  display: flex;
+  background: black;
+}
+
+#popUp-container img{
+  margin-right: 1rem;
+}
+
+#popUp-container-wrapper{
+  display: flex;
+  flex-direction: column;
+  background: black;
+  padding: 1rem;
 }
