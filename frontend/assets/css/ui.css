@@ -44,23 +44,29 @@ line-height: 4vh !important;
 
 #filterButtonContainer {
   top: 50%;
-left: 50%;
+  left: 50%;
   position: relative;
   z-index: 20000000 !important;
   margin-bottom: 50vh;
 }
 
 #filterButton {
+<<<<<<< HEAD
   position: absolute;
   font-size: 1.7vh;
 
+=======
+  cursor: pointer;
+>>>>>>> d369405a0d71ab893b1eea0b8c2a11fbedadd145
 }
 
 .buttonWrapper {
   position: absolute;
   top: 70vh;
-  left: 92vw;
+  right: 2vw;
   z-index: 2000000000;
+  cursor: pointer;
+
 }
 
 i {
@@ -113,3 +119,58 @@ input {
   transform: translate(0%, -50%);
 float: right;
 }
+
+.controlls_header{
+  padding: 1rem;
+  color: white;
+  font-family: Roboto;
+  font-size: 2rem;
+  margin-top: 2rem;
+  
+}
+
+.controlls_settings{
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5rem;
+  margin-left: 1rem;
+}
+
+.controlls_settings_red{
+  background-color: #DF4848;
+  color: white;
+  text-transform: uppercase;
+  font-family: Roboto;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.controlls_settings_orange{
+  background-color: #FF9C07;
+  color: white;
+  text-transform: uppercase;
+  font-family: Roboto;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.controlls_settings_green{
+  background-color: #57C571;
+  color: white;
+  text-transform: uppercase;
+  font-family: Roboto;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  border: none;
+  cursor: pointer;
+}
+

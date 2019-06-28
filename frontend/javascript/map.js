@@ -1,5 +1,6 @@
 var mymap = L.map('mapid').setView([52.281554, 8.042814], 13);
 
+
 // custom marker iconUrl
 var customMarker = L.icon({
     iconUrl: 'assets/images/positionSvgator (5).svg',
@@ -7,6 +8,36 @@ var customMarker = L.icon({
     iconSize:     [38, 95], // size of the icon
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
 });
+
+
+function disableLine(color){
+  
+  var paths = document.getElementsByTagName('path')
+  var arr = [].slice.call(paths);
+  
+  arr.map(path => {
+   
+    console.log(path.style.stroke)
+    if(path.style.stroke == color){
+      
+      path.style.display = "none";
+    }
+  })
+}
+
+var active = false;
+function toggle (){
+  var el = document.getElementById('settings')
+  if(active){
+    el.style.width = "0px"
+    el.style.padding = "0rem;"
+    active = false
+  } else {
+    el.style.width = "300px"
+    el.style.padding = "2rem;"
+    active = true
+  }
+}
 
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubmFyZHZrIiwiYSI6ImNqeGVvczJlcjBwMjUzb21qdWRtYzdxbjQifQ.QNSNzwAg-_pDSAHbmV-RxA', {
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
@@ -108,14 +139,20 @@ $( document ).ready(function(){
       ,{
         showOnMouseOver: true
       });
-      mymap.fitBounds(polyline.getBounds());
+     // mymap.fitBounds(polyline.getBounds());
     });
   }
 
-  $.getJSON("data.json", function(json) {
-    createLines(json)
+  mymap.on('moveend', function() { 
+    console.log(mymap.getBounds());
+    $.getJSON("http://10.229.54.121:8080/ways?top=" + mymap.getBounds().getNorth() +"&left="+mymap.getBounds().getWest()+"&bottom="+mymap.getBounds().getSouth()+"&right="+mymap.getBounds().getEast(), function(response){
+      createLines(response);
+    });
   });
+
 });
+
+
 
 /*fetch('./data.json')
   .then(function(resp) {
