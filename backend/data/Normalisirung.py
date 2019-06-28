@@ -88,15 +88,16 @@ def noise(tags):
             return (value - 1)/(5-1)
 
 
-def speed(tags):
-    for tag in tags:
-        key = ""
-        if key == "speed": #TODO set key name
-            try:
-                int_value = int(value)
-            except Exception:
-                int_value = 5
-            return (int_value - 5)/(160-5)
+def speed(tag):
+    if "maxspeed" in tag:
+        value = tag["maxspeed"]
+        try:
+            int_value = int(value)
+        except Exception:
+            int_value = 5
+        if int_value > 70:
+            int_value = 70
+        return 1 - (int_value - 5)/(70-5)
 
 def workground(tags):
     for tag in tags:
@@ -109,37 +110,44 @@ def way(id, tags):
 
     #tags = [("key", "Test"), ("key2", "test2")]
     street_data, not_bike_way_data = street_conditon(tags)
-    if street_data !=  None:
-        #print(str(id))
-        #print(str(not_bike_way_data))
-        print('{"' + str(id) + '": ' + str(street_data) + '},')
+    speed_data = speed(tags)
+    #if street_data !=  None:
+    if speed_data !=  None and street_data != None:
+
+        #print('{"' + str(id) + '": ' + str(street_data) + '},')
+        print('{"' + str(id) + '": {"speed":' + str(speed_data) + ', "street": ' + str(street_data) + '}},')
 
     return street_data
-    #noise_data = noise(tags)
-    #speed_data = speed(tags)
-    #workground_data = workground(tags)
 
+def gewichtet(weg, geschwin, lautst=0, baust=0):
+    return (3*weg + 5*geschwin + 1*lautst + 1*baust)/8 # 10
 
-    #TODO daten in die Datenbank
 
 def main():
     i = 0
+    dic = {}
+
     with open('waysExport_new.json') as f:
         data = json.load(f)
 
-        for w in data:
-            #print(w["id"])
-            #print(w["tags"])
-            if w["tags"] != None:
-                x = way(w["id"], w["tags"])
-            #z = w["tags"]
-            #if z != None and 'highway' in z:
-            #    print(z["highway"])
-                #if x != None:
-                #    i = i + x
-        #print( str(i))
+    for w in data:
+        items = {}
+        id = w["id"]
+        tags = w["tags"]
 
-    #TODO itarieren über die ways
+        if tags != None:
+            street_data, not_bike_way_data = street_conditon(tags)
+            speed_data = speed(tags)
+            if speed_data !=  None and street_data != None:
+                items["street_data"] = str(street_data)
+                items["speed"] = str(speed_data)
+                items["calc"] = str(gewichtet(street_data, speed_data))
+
+                dic[id] =items
+
+    print(json.dumps(dic))
+
+    #TODO daten in die Datenbank
 
 if __name__ == '__main__':
     main()
