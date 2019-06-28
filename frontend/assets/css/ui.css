@@ -47,4 +47,5 @@ margin-right: auto !important;
   float: right;
   margin-top: 20vh;
   margin-left: 80vw;
+  z-index: 20000000 !important;
 }
