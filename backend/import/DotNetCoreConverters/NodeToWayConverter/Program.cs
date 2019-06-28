@@ -69,18 +69,31 @@ namespace NodeToWayConverter
                     if (tagValue != null)
                     {
                         var nodeId = node.Attributes.GetNamedItem("id").Value;
+                        var lat = node.Attributes.GetNamedItem("lat").Value;
+                        var lon = node.Attributes.GetNamedItem("lon").Value;
                         var targetNode = new XElement("node",
                             new XAttribute("id", nodeId),
-                            new XAttribute("lat", node.Attributes.GetNamedItem("lat").Value),
-                            new XAttribute("lon", node.Attributes.GetNamedItem("lon").Value));
+                            new XAttribute("lat", lat),
+                            new XAttribute("lon", lon));
+
+                        var fakePathNodeId = Guid.NewGuid().ToString("N").GetHashCode();
+                        var targetFakePathNode = new XElement("node",
+                            new XAttribute("id", fakePathNodeId),
+                            new XAttribute("lat", double.Parse(lat) + 0.00000000001),
+                            new XAttribute("lon", double.Parse(lat) + 0.00000000001));
+
                         var targetWay = new XElement("way",
                             new XAttribute("id", Guid.NewGuid().ToString("N").GetHashCode()),
                             new XElement("nd",
                                 new XAttribute("ref", nodeId)),
+                            new XElement("nd",
+                                new XAttribute("ref", fakePathNodeId)),
                             new XElement("tag",
                                 new XAttribute("k", tagKey),
                                 new XAttribute("v", tagValue)));
+
                         targetRoot.Add(targetNode);
+                        targetRoot.Add(targetFakePathNode);
                         targetRoot.Add(targetWay);
                     }
                 }
