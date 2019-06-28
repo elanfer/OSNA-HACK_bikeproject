@@ -1,8 +1,6 @@
 
 .leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar, .leaflet-zoomin, .leafletzoomout{
-  border:none !important;
-right: 30px !important;
-bottom: 30px !important;
+  display: none;
 float: right !important;
 font-size: 18px !important;
 }
@@ -58,8 +56,8 @@ line-height: 40px!important;
 
 .buttonWrapper {
   position: absolute;
-  bottom: 200px;
-  right:200px;
+  bottom: 65pt;
+  right:72pt;
   z-index: 2000000000;
   cursor: pointer;
 }
