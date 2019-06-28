@@ -1,20 +1,21 @@
 import psycopg2
 import xml.etree.ElementTree as ET
-root = ET.parse('backend/data/converted/Velorouten.osm').getroot()
+root = ET.parse('backend/data/converted/Radschnellrouten.osm').getroot()
 coords = root.findall('node')
 nodemap = {}
 for elem in coords:
     nodemap[elem.get('id')] = [elem.get('lat'), elem.get('lon')]
-    
 
 ways = []
+tags = {}
 for way in root.findall('way'):         
     nodes = []
     for node in way:   
         try:
-            nodes.append(nodemap[node.get('ref')])
+            nodes.append(nodemap[node.get('ref')])            
         except KeyError as e:
-            print('nothing...')
+            tag_name = node.get('k')
+            tag_value = node.get('v')
     min_lat = float(nodes[0][0])
     max_lat = float(nodes[0][0])
     min_long = float(nodes[0][1])
@@ -60,6 +61,8 @@ for way in root.findall('way'):
         for item in result:
             if(highscore == item[2]):
                 ways.append(item[0])
+                cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, %s, %s);', (str(item[0]), tag_name, tag_value))
             else:
                 break
-print(ways)
+    conn.commit()
+    conn.close()
