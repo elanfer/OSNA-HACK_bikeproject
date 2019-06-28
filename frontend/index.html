@@ -5,26 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin=""/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
   <link rel="stylesheet" href="assets/css/map.css">
+    <link rel="stylesheet" href="assets/css/ui.css">
   <title>Bike Project</title>
 </head>
 <body>
 
-  <div id="mapid"></div>
-  <div class="controlls">
-    <div class="controlls_header">
-    </div>
-    <div class="controlls_panel">
-        <button class="controlls_panel_btn"></button>
-        <button class="controlls_panel_btn"></button>
-        <button class="controlls_panel_btn"></button>
+  <div id="mapid">
+    <div class="buttonWrapper">
+      <button onclick="" id="filterButton" class="leaflet-control-zoom-in"><i class="fas fa-cog"></i></button>
+      </div>
     </div>
   </div>
+
+
 
   <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -37,6 +38,6 @@
 
   <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
   <script src="javascript/map.js"></script>
-
+  <script src="javascript/ui.js"></script>
 </body>
 </html>
