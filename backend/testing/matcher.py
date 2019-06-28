@@ -1,6 +1,6 @@
 import psycopg2
 import xml.etree.ElementTree as ET
-root = ET.parse('backend/data/converted/Velorouten.osm').getroot()
+root = ET.parse('backend/data/converted/baustellen_quelle_stadt_osnabrueck.osm').getroot()
 coords = root.findall('node')
 nodemap = {}
 for elem in coords:

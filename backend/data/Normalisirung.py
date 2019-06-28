@@ -100,8 +100,8 @@ def speed(tag):
         return 1 - (int_value - 5)/(70-5)
 
 def construction(tag):
-    if "BEEINTRAEC" in tag:
-        value = tag["BEEINTRAEC"]
+    if "construction" in tag:
+        value = tag["construction"]
         if value == "Vollsperrung":
             return 0.1
         elif value == "Halbseitige Fahrbahnsperrung, Einsatz Lichtsignalanlage" or value == "Einsatz Lichtsignalanlage" or value == "Einsatz Lichtanlage, Spurverlegung":
@@ -166,6 +166,7 @@ def count(dic):
     print("street: " , street)
     print("speed: " , speed)
     print("noise: " , noise)
+    print("construction: ", construction)
     print("#################")
     print("0 Daten " , n0)
     print("1 Daten: " , n1)
@@ -179,12 +180,12 @@ def main():
     i = 0
     dic = {}
 
-    with open('waysExport_new.json') as f:
+    with open('backend/data/waysExport_new.json') as f:
         data = json.load(f)
 
 
     # Lautstaerke bekommen
-    filename = 'laerm/laermkartierung.csv'
+    filename = 'backend/data/laerm/laermkartierung.csv'
     lines = [line.rstrip('\n') for line in open(filename)]
     laerm = {}
     for l in lines:
@@ -208,7 +209,7 @@ def main():
             speed_data = speed(tags)
             construction_data = construction(tags)
             noise_data = noise(tags)
-            if speed_data !=  None or street_data != None or workground_data != None or noise_data != None:
+            if speed_data !=  None or street_data != None or construction_data != None or noise_data != None:
                 items["street"] = street_data
                 items["speed_car"] = speed_data
                 items["construction"] = construction_data
@@ -236,7 +237,7 @@ def main():
         if value['noise'] is not None:
             cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'noise\', %s);', (key, value['noise']))
         if value['default_calc'] is not None:
-            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'street\', %s);', (key, value['default_calc']))
+            cur.execute('INSERT INTO custom_tags (way_id, tag_name, tag_value) VALUES (%s, \'default_calc\', %s);', (key, value['default_calc']))
     conn.commit()
     conn.close
     #TODO daten in die Datenbank
