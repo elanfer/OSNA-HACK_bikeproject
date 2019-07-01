@@ -1,0 +1,335 @@
+[
+  {
+    "osm_id": 2759292,
+    "members": {
+      "160353843": "type=>way",
+      "205505027": "type=>way"
+    },
+    "attributes": {
+      "uid": "47343",
+      "id": "2759292",
+      "user": "hholm",
+      "version": "1",
+      "changeset": "15031388",
+      "timestamp": "2013-02-14T16:59:31Z"
+    },
+    "tags": {
+      "area": "yes",
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  },
+  {
+    "osm_id": 2759293,
+    "members": {
+      "205494621": "type=>way",
+      "205505025": "type=>way"
+    },
+    "attributes": {
+      "uid": "47343",
+      "id": "2759293",
+      "user": "hholm",
+      "version": "1",
+      "changeset": "15031388",
+      "timestamp": "2013-02-14T16:59:31Z"
+    },
+    "tags": {
+      "area": "yes",
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  },
+  {
+    "osm_id": 3113055,
+    "members": {
+      "371397361": "type=>way",
+      "312236670": "type=>way",
+      "312236674": "type=>way"
+    },
+    "attributes": {
+      "uid": "710985",
+      "id": "3113055",
+      "user": "N9713",
+      "version": "5",
+      "changeset": "50235625",
+      "timestamp": "2017-07-12T16:57:10Z"
+    },
+    "tags": {
+      "alt_name": "Bahnhofsplatz",
+      "lit": "yes",
+      "name": "Theodor-Heuss-Platz",
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": "Theodor-Heuss-Platz"
+  },
+  {
+    "osm_id": 3735288,
+    "members": {
+      "281172590": "type=>way",
+      "281172566": "type=>way",
+      "281172600": "type=>way",
+      "281172575": "type=>way"
+    },
+    "attributes": {
+      "uid": "161619",
+      "id": "3735288",
+      "user": "FvGordon",
+      "version": "2",
+      "changeset": "27707832",
+      "timestamp": "2014-12-26T13:03:44Z"
+    },
+    "tags": {
+      "area": "yes",
+      "access": "private",
+      "type": "multipolygon",
+      "highway": "service"
+    },
+    "tag_name": "highway",
+    "tag_value": "service",
+    "name": null
+  },
+  {
+    "osm_id": 3835367,
+    "members": {
+      "288915390": "type=>way",
+      "288915388": "type=>way",
+      "288915399": "type=>way",
+      "288915389": "type=>way",
+      "288915392": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "3835367",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:11Z"
+    },
+    "tags": {
+      "tactical_paving": "yes",
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  },
+  {
+    "osm_id": 5227099,
+    "members": {
+      "126696289": "type=>way",
+      "350392020": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "5227099",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:12Z"
+    },
+    "tags": {
+      "name": "Derby-Platz",
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": "Derby-Platz"
+  },
+  {
+    "osm_id": 5361535,
+    "members": {
+      "360129692": "type=>way",
+      "360129695": "type=>way",
+      "360129690": "type=>way",
+      "360129689": "type=>way",
+      "360129702": "type=>way",
+      "360129696": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "5361535",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:12Z"
+    },
+    "tags": {
+      "name": "Entrée-Platz",
+      "source": "http://www.hasepost.de/wissenschaftspark-osnabruecks-teuerste-baeume-5515/",
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": "Entrée-Platz"
+  },
+  {
+    "osm_id": 5540847,
+    "members": {
+      "281091927": "type=>way",
+      "338990535": "type=>way"
+    },
+    "attributes": {
+      "uid": "710985",
+      "id": "5540847",
+      "user": "N9713",
+      "version": "3",
+      "changeset": "58936239",
+      "timestamp": "2018-05-13T23:37:31Z"
+    },
+    "tags": {
+      "name": "Eingangsbereich Nord 2",
+      "type": "multipolygon",
+      "highway": "footway"
+    },
+    "tag_name": "highway",
+    "tag_value": "footway",
+    "name": "Eingangsbereich Nord 2"
+  },
+  {
+    "osm_id": 5617763,
+    "members": {
+      "360603904": "type=>way",
+      "377140362": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "5617763",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:12Z"
+    },
+    "tags": {
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  },
+  {
+    "osm_id": 5684550,
+    "members": {
+      "381978483": "type=>way",
+      "26844622": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "5684550",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:13Z"
+    },
+    "tags": {
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  },
+  {
+    "osm_id": 5684551,
+    "members": {
+      "24682616": "type=>way",
+      "381978487": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "5684551",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:13Z"
+    },
+    "tags": {
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  },
+  {
+    "osm_id": 6034129,
+    "members": {
+      "402285607": "type=>way",
+      "402285606": "type=>way",
+      "402286958": "type=>way",
+      "402285604": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "6034129",
+      "user": "meridianeum",
+      "version": "4",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:13Z"
+    },
+    "tags": {
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  },
+  {
+    "osm_id": 6034131,
+    "members": {
+      "381239795": "type=>way",
+      "402287025": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "6034131",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:13Z"
+    },
+    "tags": {
+      "name": "ICO-Platz",
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": "ICO-Platz"
+  },
+  {
+    "osm_id": 6598997,
+    "members": {
+      "443441463": "type=>way",
+      "443441468": "type=>way"
+    },
+    "attributes": {
+      "uid": "148776",
+      "id": "6598997",
+      "user": "meridianeum",
+      "version": "2",
+      "changeset": "47354345",
+      "timestamp": "2017-04-01T12:47:13Z"
+    },
+    "tags": {
+      "type": "multipolygon",
+      "highway": "pedestrian"
+    },
+    "tag_name": "highway",
+    "tag_value": "pedestrian",
+    "name": null
+  }
+]

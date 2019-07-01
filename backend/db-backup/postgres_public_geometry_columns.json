@@ -1,0 +1,155 @@
+[
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "county",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "state",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "place",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "cousub",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "edges",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTILINESTRING"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "addrfeat",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "LINESTRING"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "faces",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "zcta5",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "GEOMETRY"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "tract",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "tabblock",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "tiger",
+    "f_table_name": "bg",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4269,
+    "type": "MULTIPOLYGON"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "public",
+    "f_table_name": "ways_vertices_pgr",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4326,
+    "type": "POINT"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "public",
+    "f_table_name": "ways",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4326,
+    "type": "LINESTRING"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "public",
+    "f_table_name": "pointsofinterest",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4326,
+    "type": "POINT"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "public",
+    "f_table_name": "pointsofinterest",
+    "f_geometry_column": "new_geom",
+    "coord_dimension": 2,
+    "srid": 4326,
+    "type": "POINT"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "public",
+    "f_table_name": "osm_nodes",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4326,
+    "type": "POINT"
+  },
+  {
+    "f_table_catalog": "postgres",
+    "f_table_schema": "public",
+    "f_table_name": "osm_ways",
+    "f_geometry_column": "the_geom",
+    "coord_dimension": 2,
+    "srid": 4326,
+    "type": "LINESTRING"
+  }
+]
