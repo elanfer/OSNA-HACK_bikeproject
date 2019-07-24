@@ -8,6 +8,14 @@ An English description can be found below.
 
 Unsere Idee war es, die sichersten Routen für Fahrradfahrer*innen in Osnabrück zu ermitteln und zu visualisieren. Dazu haben wir zunächst Daten aus OpenStreetMap mit Daten der Stadt Osnabrück kombiniert, dann eine Metrik entworfen, um die einzelnen Werte zu normalisieren und zu gewichten und im Anschluss mit Algorithmen aus der Geoinformatik alles in einer Ampel-Farbskala auf einer Karte dargestellt. Die Software ist funktionsfähig, modular erweiterbar und frei verfügbar.
 
+## Screenshots
+
+#### Desktop-Ansicht
+![Screenshot Desktop-Ansicht](https://github.com/elanfer/OSNA-HACK_bikeproject/blob/master/doc/screenshot.png)
+
+#### Mobile Ansicht
+![Screenshot Mobile Ansicht](https://github.com/elanfer/OSNA-HACK_bikeproject/blob/master/doc/screenshot_mobile.png)
+
 ## Lizenz
 
 Das Projekt steht unter der GNU General Public License v3.0
