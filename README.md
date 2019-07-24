@@ -13,6 +13,9 @@ Unsere Idee war es, die sichersten Routen für Fahrradfahrer*innen in Osnabrück
 Das Projekt steht unter der GNU General Public License v3.0
 
 
+---
+*English description*
+
 # urbanBiking
 
 This project was developed during the first hackathon of the Stadtwerke Osnabrück, the OsnaHack on June 27/28th, 2019. A (German) documentation of the hackathon can be found [here](https://github.com/codeforosnabrueck/osnahack).
